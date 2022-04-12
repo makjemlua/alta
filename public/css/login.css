@@ -1,0 +1,38 @@
+body {
+  background-color: #B1B1B1;
+}
+.form-login {
+    position: relative;
+    width: 1140px;
+    height: 650px;
+    left: 40px;
+    top: 30px;
+    background: #F7F7F7;
+    border-radius: 16px;
+  }
+  .forgot-password-link {
+    color: #E73F3F;
+  }
+  .button-login {
+    background-color: #FF9138;
+    color: #F7F7F7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px;
+  }
+  label {
+    font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  }
+  .form-group, .forgot-password, .login-submit {
+    margin-left: 60px;
+  }
+  .login-submit {
+    margin-top: 10px;
+  }
+  .form-login-right img {
+    width: 100%;
+    border-radius: 10px;
+  }
