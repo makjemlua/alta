@@ -11,7 +11,7 @@
 <div class="wrapper">
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -55,7 +55,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('device.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Thiết bị
@@ -100,6 +100,13 @@
           </li>
 
         </ul>
+        <li class="nav-item button-logout">
+          <a href="" class="nav-link">
+            
+              <a  href="{{route('logout.index')}}" class="btn btn-logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Đăng xuất</a>
+          </a>
+        </li>
+
       </nav>
       <!-- /.sidebar-menu -->
     </div>

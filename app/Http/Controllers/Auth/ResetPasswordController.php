@@ -27,4 +27,36 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function resetPassword(RequestResetPassword $request) {
+		$code = $request->code;
+		$email = $request->email;
+
+		$checkUser = User::where([
+			'code' => $code,
+			'email' => $email,
+		])->first();
+
+		if (!$checkUser) {
+			return redirect('/')->with('danger', 'Xin lỗi, không đúng đường dẫn lấy lại mật khẩu');
+		}
+		return view('auth.passwords.reset');
+	}
+	public function SaveResetPassword(RequestResetPassword $requestResetPassword) {
+		$code = $requestResetPassword->code;
+		$email = $requestResetPassword->email;
+
+		$checkUser = User::where([
+			'code' => $code,
+			'email' => $email,
+		])->first();
+
+		if (!$checkUser) {
+			return redirect('/')->with('danger', 'Xin lỗi, không đúng đường dẫn lấy lại mật khẩu');
+		}
+		$checkUser->password = md5($requestResetPassword->password);
+		$checkUser->save();
+
+		return redirect()->route('get.login')->with('success', 'Mật khẩu đã được đổi thành công');
+	}
 }

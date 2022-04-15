@@ -1,0 +1,68 @@
+.nd {
+    background-color: #f4f6f9;
+}
+.avatar-user {
+    width: 248px;
+    height: 248px;
+    border-radius: 50%;
+    margin-top: 50px;
+    margin-left: 60px;
+    position: relative;
+}
+div.card {
+    width: 1112px;
+    height: 397px;
+    margin-left: 24px;
+}
+.form-group {
+    margin-top: 40px;
+}
+.user-name p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    margin-top: 10px;
+}
+.avatar-input {
+    position: absolute;
+    top: 250px;
+    right: 95px;
+}.avatar-input i {
+    
+    font-size: 20px;
+    background-color: #FF7506;
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid #FFF;
+    color: #FFF;
+}
+
+
+.modal {
+    top: 25px;
+    right: 110px;
+    width: 360px;
+    left: unset;
+}
+.modal-header {
+    background-color: #FF7506;
+    border: 1px solid #FF7506;
+}
+.modal-title {
+    color: #FFF;
+}
+.modal-body {
+    height: 478px;
+    overflow-y: scroll;
+}
+.user-bell, .time-bell {
+    font-size: 16px;
+}
+.user-bell {
+    color: #FF7506;
+}
+.time-bell {
+    font-weight: 400;
+}

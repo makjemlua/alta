@@ -20,5 +20,7 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
   <!-- style -->
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <!-- dashboard -->
-    <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+  <!-- dashboard -->
+  <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+  <!-- admin -->
+  <link rel="stylesheet" href="{{asset('css/admin.css')}}">

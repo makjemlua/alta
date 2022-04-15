@@ -30,16 +30,17 @@
               </div>
               <div class="login-wrapper my-auto">
                 <!-- <h1 class="login-title">Log in</h1> -->
-                <form action="admin.html" method="post">
-                  <div class="form-group col-md-8">
+                <form action="" method="post">
+                  @csrf
+                  <div class="form-group col-md-10">
                     <label for="text">Đặt lại mật khẩu</label>
-                    <label for="">Vui lòng đặt lại mật khẩu của bạn *</label>
-                    <input type="text" name="text" id="text" class="form-control" placeholder="" required>
+                    <label for="email">Vui lòng nhập email để đặt lại mật khẩu *</label>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="">
                   </div>
                   
                   <div class="col-md-8 d-flex justify-content-center login-submit">
-                    <button name="login" id="login" class="btn col-md-4" type="cancel">Hủy</button>
-                    <button name="login" id="login" class="btn col-md-4 button-login" type="submit">Tiếp tục</button>
+                    <button class="btn col-md-4" type="cancel">Hủy</button>
+                    <button class="btn col-md-4 button-login" type="submit">Tiếp tục</button>
                   </div>
                 </form>
                 

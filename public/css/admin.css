@@ -1,0 +1,33 @@
+.icon-avatar img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+.fa.fa-solid.fa-bell {
+    color: #FF7506;
+}
+
+.icon-name p {
+    line-height: 5px;
+}
+.xin-chao {
+    font-weight: 100;
+    font-size: 12px;
+}
+.icon-user-name {
+    font-weight: 700;
+    font-size: 16px;
+}
+.fa.fa-solid.fa-bell {
+    margin-right: 10px;
+}
+.buton-bell {
+    border: unset;
+    background-color: unset;
+}
+.breadcrumb {
+    background-color: unset;
+}
+.content-wrapper {
+    height: auto;
+}

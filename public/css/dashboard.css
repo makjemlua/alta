@@ -1,3 +1,28 @@
 .content-wrapper {
     min-height: 100px !important;
 }
+
+.button-logout {
+    position: absolute;
+    bottom: 10px;
+}
+
+.btn-logout {
+    background-color: #FFF2E7;
+    border-radius: 8px;
+    width: 176px;
+    height: 48px;
+    left: 12px;
+    top: 0px;
+}
+
+a.btn.btn-logout {
+    color: #FF7506;
+}
+.nd {
+    position:relative;
+    min-height:640px
+}
+.main-sidebar {
+    background-color: #FFFFFF;
+}

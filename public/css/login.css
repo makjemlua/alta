@@ -36,3 +36,26 @@ body {
     width: 100%;
     border-radius: 10px;
   }
+  .error{
+    color: red;
+    margin-top: 10px;
+  }
+  .danger {
+    border: 1px solid red;
+  }
+  .form-group {
+    position: relative;
+}
+
+i.fa.fa-eye {
+    color: #337ab7;
+    position: absolute;
+    top: 60%;
+    right: 20px;
+}
+i.fa.fa-eye-slash {
+  color: #337ab7;
+  position: absolute;
+  top: 60%;
+  right: 20px;
+}
