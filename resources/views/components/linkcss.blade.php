@@ -18,9 +18,16 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <!-- style -->
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <!-- dashboard -->
   <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
   <!-- admin -->
   <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+
+  {{-- Date-picker --}}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" rel="stylesheet">
+  <!-- autocomplete -->
+  <link rel="stylesheet" href="{{asset('css/fm.tagator.jquery.css')}}">

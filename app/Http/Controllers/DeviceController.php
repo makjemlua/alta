@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Device;
+use App\Models\Service;
+use App\Http\Requests\RequestDevice;
 
 class DeviceController extends Controller
 {
@@ -11,9 +14,23 @@ class DeviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('device.index');
+        $devices = Device::whereRaw(1);
+        if ($request->search) {
+            $devices->where('de_name', 'like', '%' . $request->search . '%');
+        }
+        if ($request->active) {
+            $devices->where('de_active', $request->active);
+        }
+        if ($request->connect) {
+            $devices->where('de_connect', $request->connect);
+        }
+        $devices = $devices->paginate(5);
+        $viewData = [
+            'devices' => $devices,
+        ];
+        return view('device.index', $viewData);
     }
 
     /**
@@ -23,7 +40,11 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::get()->pluck('se_name')->toarray();
+        $viewData = [
+            'services' => $services,
+        ];
+        return view('device.create', $viewData);
     }
 
     /**
@@ -32,9 +53,10 @@ class DeviceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestDevice $requestDevice)
     {
-        //
+        $this->insertOrUpdate($requestDevice);
+        return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -45,7 +67,11 @@ class DeviceController extends Controller
      */
     public function show($id)
     {
-        //
+        $device = Device::find($id);
+        $viewData = [
+            'device' => $device,
+        ];
+        return view('device.detail', $viewData);
     }
 
     /**
@@ -56,7 +82,13 @@ class DeviceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $device = Device::find($id);
+        $services = Service::get()->pluck('se_name')->toarray();
+        $viewData = [
+            'device' => $device,
+            'services' => $services
+        ];
+        return view('device.update', $viewData);
     }
 
     /**
@@ -66,9 +98,27 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $requestDevice, $id)
     {
-        //
+        $this->insertOrUpdate($requestDevice, $id);
+        return redirect()->back()->with('success', 'Cập nhập thành công');
+    }
+
+    public function insertOrUpdate($requestDevice, $id = '')
+    {
+        $device = new Device();
+        if ($id) {
+            $device = Device::find($id);
+        }
+        $device->de_code = $requestDevice->de_code;
+        $device->de_name = $requestDevice->de_name;
+        $device->de_ip = $requestDevice->de_ip;
+        $device->de_type = $requestDevice->de_type;
+        $device->de_username = $requestDevice->de_username;
+        $device->de_password = $requestDevice->de_password;
+        $device->de_service = $requestDevice->de_service;
+        //dd($device);
+        $device->save();
     }
 
     /**

@@ -1,3 +1,10 @@
+body, html{
+    margin:0 !important;
+    padding:0 !important;
+}
+.row {
+    margin-right: 0px;
+}
 .icon-avatar img {
     border-radius: 50%;
     width: 30px;
@@ -30,4 +37,8 @@
 }
 .content-wrapper {
     height: auto;
+}
+.content-header {
+    position: absolute;
+    top: 0;
 }

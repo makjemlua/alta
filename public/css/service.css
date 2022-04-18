@@ -1,6 +1,6 @@
 div.card {
-    width: 1012px;
-    height: 470px !important;
+    width: 1112px;
+    height: auto;
     margin-left: 30px;
 }
 
@@ -32,22 +32,4 @@ thead {
 
 .card-body {
     border-radius: 10px;
-}
-
-p.read-more {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-}
-.num-pagination {
-    position: absolute;
-    bottom: 0;
-}
-.show-pagination {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 5px;
 }

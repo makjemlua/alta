@@ -64,7 +64,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('service.index')}}" class="nav-link">
               <i class="nav-icon fab fa-product-hunt"></i>
               <p>
                 Dịch vụ
@@ -135,19 +135,41 @@
 
   <!-- Main content -->
   <div class="nd">
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+          <div class="container-fluid">
+              <div class="row mb-2">
+                  <div class="col-sm-6">
+                      
+                  </div>
+                  <div class="col-sm-6">
+                      <ol class="breadcrumb float-sm-right">
+                          <li class="">
+                              <!-- Button trigger modal -->
+                              <button type="button" class="buton-bell" data-toggle="modal" data-target="#exampleModal">
+                                  <i class="fa fa-solid fa-bell"></i>
+                              </button>
+                          </li>
+                          <li class="icon-avatar"><img
+                                  src="https://live.staticflickr.com/7418/27269083173_c3fd44968a_h.jpg" alt=""></li>
+                          <li class="icon-name">
+                              <p class="xin-chao">Xin chao</p>
+                              <a href="{{route('user.index')}}" class="icon-user-name">Le Quynh Ai Van</a>
+                          </li>
+                      </ol>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </div>
     @yield('content')
   </div>
     
     <!-- /.content -->
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
-  </footer>
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -1,34 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
-    <div class="content-wrapper">
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="buton-bell" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="fa fa-solid fa-bell"></i>
-                                </button>
-                            </li>
-                            <li class="icon-avatar"><img
-                                    src="https://live.staticflickr.com/7418/27269083173_c3fd44968a_h.jpg" alt=""></li>
-                            <li class="icon-name">
-                                <p class="xin-chao">Xin chao</p>
-                                <p class="icon-user-name">Le Quynh Ai Van</p>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    
     <div class="content-wrapper">
         <div class="card">
             <div class="row">
