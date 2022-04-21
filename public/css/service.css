@@ -1,8 +1,4 @@
-div.card {
-    width: 1112px;
-    height: auto;
-    margin-left: 30px;
-}
+
 
 .align-content-end {
     right: -175px;
@@ -26,10 +22,25 @@ div.card {
     border: unset;
 }
 
-thead {
-    background-color: #FF9138;
-}
 
-.card-body {
+.detail-right {
+    background-color: white;
     border-radius: 10px;
+    height: 547px;
+}
+.detail-left {
+    background-color: white;
+    border-radius: 10px;
+}
+.row {
+    display: flex;
+    justify-content: space-between
+}
+.num {
+    border: 1.5px solid #D4D4D7;
+    padding: 5px;
+    border-radius: 8px;
+}
+.form-check-label {
+    margin-left: 20px;
 }

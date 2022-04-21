@@ -42,3 +42,19 @@ body, html{
     position: absolute;
     top: 0;
 }
+thead {
+    background-color: #FF9138;
+}
+
+.card-body {
+    border-radius: 10px;
+}
+.row {
+    display: flex;
+    justify-content: space-between
+}
+div.card {
+    width: auto;
+    height: auto;
+    margin-left: 30px;
+}

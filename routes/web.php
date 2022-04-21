@@ -6,6 +6,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\NumberController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\LogUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -38,6 +43,7 @@ Route::post('reset-password', [ResetPasswordController::class, 'SaveResetPasswor
 Route::group(['middleware' => 'auth'], function () {
     //Dashboard
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
     //User
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -59,4 +65,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/service/edit/{id}', [ServiceController::class, 'update']);
     Route::get('/service/detail/{id}', [ServiceController::class, 'show'])->name('service.detail');
     Route::get('/service/delete/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+
+    //Number
+    Route::get('/number', [NumberController::class, 'index'])->name('number.index');
+    Route::get('/number/create', [NumberController::class, 'create'])->name('number.create');
+    Route::post('/number/create', [NumberController::class, 'store']);
+    Route::get('/number/detail/{id}', [NumberController::class, 'show'])->name('number.detail');
+
+    //Report
+    Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
+    Route::post('/report/create', [ReportController::class, 'store']);
+    
+    //Role
+    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+    Route::post('/role/create', [RoleController::class, 'store']);
+    Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('role.update');
+    Route::post('/role/edit/{id}', [RoleController::class, 'update']);
+
+    //Account
+    Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+    Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
+    Route::post('/account/create', [AccountController::class, 'store']);
+    Route::get('/account/edit/{id}', [AccountController::class, 'edit'])->name('account.update');
+    Route::post('/account/edit/{id}', [AccountController::class, 'update']);
+
+    //Log User
+    Route::get('/log-user', [LogUserController::class, 'index'])->name('log.index');
 });

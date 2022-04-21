@@ -6,40 +6,40 @@
         <div class="card">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="https://live.staticflickr.com/8165/7681941764_0748811979.jpg" alt="" class="avatar-user">
+                    <img src="{{asset('img/upload/7681941764_0748811979.jpg')}}" alt="" class="avatar-user">
                     <div class="avatar-input">
                         <a href="" class=""><i class="fa fa-solid fa-camera"></i></a>
                     </div>
                     <div class="d-flex justify-content-center user-name">
-                        <p>Lê Quỳnh Ái Vân</p>
+                        <p>{{$user->username}}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group col-md-8">
                         <label for="name">Tên người dùng</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="Nguyễn Văn An" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="{{$user->username}}" disabled>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">Số điện thoại</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="0987654321" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="{{$user->phone}}" disabled>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">Email</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="nguyenan@gmail.com" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="{{$user->email}}" disabled>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group col-md-8">
                         <label for="name">Tên đăng nhập</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="nguyenan" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="{{$user->name}}" disabled>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">Mật khẩu</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="123456" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="********" disabled>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">Vai trò</label>
-                        <input type="name" name="name" id="name" class="form-control" placeholder="Kế toán" disabled>
+                        <input type="name" name="name" id="name" class="form-control" value="{{$user->group_role}}" disabled>
                     </div>
                 </div>
             </div>

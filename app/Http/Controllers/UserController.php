@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $id = Auth::guard('web')->id();
+        $user = User::find($id);
+        $viewData = [
+            'user' => $user,
+        ];
+        return view('user.index', $viewData);
     }
 
     /**

@@ -70,7 +70,32 @@
 
                             </div>
                             <div class="col-md-12">
-                                
+                                <h4>Quy tắc cấp số</h4>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Tăng tự động từ <span class="num">0001</span> đến <span
+                                            class="num">9999</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Prefix <span class="num">0001</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Surfix <span class="num">0001</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Reset mỗi ngày
+                                    </label>
+                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <a href="{{ route('device.index') }}" class="btn btn-default" name="cancel"

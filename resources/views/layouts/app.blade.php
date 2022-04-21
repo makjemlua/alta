@@ -46,7 +46,7 @@
           </li> -->
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('home.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Dashboard
@@ -73,7 +73,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('number.index')}}" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Cấp số
@@ -82,7 +82,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('report.index')}}" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Báo cáo
@@ -91,13 +91,34 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>
-                Cài đặt hệ thống
-              </p>
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                    Cài đặt hệ thống
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{route('role.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Quản lý vai trò</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('account.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Quản lý tài khoản</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('log.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Nhật ký người dùng</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         </ul>
         <li class="nav-item button-logout">

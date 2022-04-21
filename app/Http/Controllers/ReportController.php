@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Service;
 
-class ServiceController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +13,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::whereRaw(1);
-        $services = $services->paginate(10);
-        $viewData = [
-            'services' => $services,
-        ];
-        return view('service.index', $viewData);
+        return view('report.index');
     }
 
     /**
@@ -29,7 +23,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        //
     }
 
     /**
@@ -51,7 +45,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        return view('service.detail');
+        //
     }
 
     /**
@@ -62,7 +56,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        return view('service.update');
+        //
     }
 
     /**
