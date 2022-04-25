@@ -78,6 +78,9 @@
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                     <table class="table table-bordered" id="dataTable">
+                        @php
+                            $i = 1;
+                        @endphp
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -88,21 +91,23 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>34</td>
-                                <td>trg</td>
-                                <td>fergrgrgrg</td>
-                                <td>rg3</td>
-                                <td>g34g</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>1213r</td>
-                                <td>fergrg</td>
-                                <td>rr</td>
-                                <td>34gr5g</td>
-                            </tr>
+                            @foreach ($reports as $report)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $report->re_name }}</td>
+                                    <td>{{ $report->re_time }}</td>
+                                    <td>
+                                        @if ($report->re_status == 1)
+                                            Đang chờ
+                                        @elseif($report->re_status == 2)
+                                            Đã sử dụng
+                                        @elseif($report->re_status == 0)
+                                            Bỏ qua
+                                        @endif
+                                    </td>
+                                    <td>{{ $report->re_device }}</td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -112,7 +117,8 @@
             </div>
             <div class="col-md-1 col-sm-1">
                 <div class="form-group">
-                    <a href="" class="btn btn-success button-add"><i class="fas fa-plus-square"></i>
+                    <a href="{{ route('report.export') }}" class="btn btn-success button-add"><i
+                            class="fas fa-plus-square"></i>
                         <p>Tải về</p>
                     </a>
                 </div>
@@ -127,8 +133,8 @@
         $(document).ready(function() {
             $('#dataTable').DataTable({
                 paging: false,
-            ordering: true,
-            searching: false,
+                ordering: true,
+                searching: false,
             });
         });
         $(function() {

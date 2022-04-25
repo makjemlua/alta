@@ -74,8 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Report
     Route::get('/report', [ReportController::class, 'index'])->name('report.index');
-    Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
-    Route::post('/report/create', [ReportController::class, 'store']);
+    Route::get('report/export/', [ReportController::class, 'export'])->name('report.export');
     
     //Role
     Route::get('/role', [RoleController::class, 'index'])->name('role.index');
@@ -85,11 +84,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/role/edit/{id}', [RoleController::class, 'update']);
 
     //Account
-    Route::get('/account', [AccountController::class, 'index'])->name('account.index');
-    Route::get('/account/create', [AccountController::class, 'create'])->name('account.create');
-    Route::post('/account/create', [AccountController::class, 'store']);
-    Route::get('/account/edit/{id}', [AccountController::class, 'edit'])->name('account.update');
-    Route::post('/account/edit/{id}', [AccountController::class, 'update']);
+    Route::get('/account', [UserController::class, 'listUser'])->name('account.index');
+    Route::get('/account/create', [UserController::class, 'create'])->name('account.create');
+    Route::post('/account/create', [UserController::class, 'store']);
+    Route::get('/account/edit/{id}', [UserController::class, 'edit'])->name('account.update');
+    Route::post('/account/edit/{id}', [UserController::class, 'update']);
 
     //Log User
     Route::get('/log-user', [LogUserController::class, 'index'])->name('log.index');
