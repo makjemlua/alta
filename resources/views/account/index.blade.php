@@ -84,19 +84,33 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>erebr</td>
-                                <td>6brbrbr</td>
-                                <td>343436</td>
-                                <td>rgrgr</td>
-                                <td>rgergt</td>
-                                <td>rgrer</td>
-                                <td>
-                                    <a href="{{ route('account.update', 1) }}">Cập nhập</a>
-                                </td>
-                            </tr>
-
+                            @foreach ($users as $item)
+                                <tr>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->username}}</td>
+                                    <td>{{$item->phone}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>
+                                        @if ($item->group_role == 1)
+                                            Kế toán
+                                        @elseif($item->group_role == 2)
+                                            Quản lý
+                                        @elseif($item->group_role == 3)
+                                            Admin
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->active == 1)
+                                            Hoạt động
+                                        @elseif($item->active == 2)
+                                            Ngưng hoạt động
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('account.update', 1) }}">Cập nhập</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

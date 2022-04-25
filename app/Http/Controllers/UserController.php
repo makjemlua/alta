@@ -23,6 +23,16 @@ class UserController extends Controller
         return view('user.index', $viewData);
     }
 
+    public function listUser()
+    {
+        $users = User::whereRaw(1);
+        $users = $users->paginate(10);
+        $viewData = [
+            'users' => $users,
+        ];
+        return view('account.index', $viewData);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('account.create');
     }
 
     /**
@@ -41,7 +51,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->insertOrUpdate($request);
+        return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -63,7 +74,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('account.update');
     }
 
     /**
@@ -87,5 +98,22 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function insertOrUpdate(Request $request, $id = '')
+    {
+        $user = new User();
+        if ($id) {
+            $user = User::find($id);
+        }
+        $user->username = $request->username; //Ho ten
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->group_role = $request->group_role;
+        $user->name = $request->name;  //Ten dang nhap
+        $user->password = $request->password;
+        $user->active = $request->active;
+        //dd($user);
+        $user->save();
     }
 }

@@ -8,7 +8,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="breadCrumb">
-                            <h4><span>Dịch vụ</span> > <a href="">Danh sách dịch vụ</a></h4>
+                            <h4><span>Cài đặt hệ thống</span> > <span>Quản lý tài khoản</span> > <a href="">Thêm tài khoản</a></h4>
                         </div>
                     </div>
 
@@ -19,47 +19,49 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="container-fluid">
-                <h4 class="">Quản lý dịch vụ</h4>
+                <h4 class="">Quản lý tài khoản</h4>
                 <div class="card card-info">
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-                        <p>Thông tin dịch vụ</p>
+                        <p>Thông tin tài khoản</p>
                         <form method="POST" action="" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Họ tên: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Số điện thoại: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Email: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
-                                            
+                                            <select name="is_sale" id="is_sale" class="form-control">
+                                                <option value="1">Kế toán</option>
+                                                <option value="2">Quản lý</option>
+                                                <option value="3">Admin</option>
+                                            </select>
                                         </div>
                                     </div>
                                     
@@ -68,35 +70,36 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Tên đăng nhập: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Mật khẩu: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Nhập lại mật khẩu: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                                placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="de_code" class="col-sm-6 col-form-label">Tình trạng: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
-                                            
+                                            <select name="is_sale" id="is_sale" class="form-control">
+                                                <option value="1">Ngưng hoạt động</option>
+                                                <option value="2">Hoạt động</option>
+                                            </select>
                                         </div>
                                     </div>
 
