@@ -23,11 +23,12 @@
                 <div class="row">
                     <div class="col-md-3 detail-left">
                         <h4>Thông tin dịch vụ</h4>
-                        <p>Mã dịch vụ:</p>
-                        <p>Tên dịch vụ:</p>
-                        <p>Mô tả:</p>
+                        <p>Mã dịch vụ: {{ $service->se_code }}</p>
+                        <p>Tên dịch vụ: {{ $service->se_name }}</p>
+                        <p>Mô tả: {{ $service->se_describe }}</p>
                         <h4>Quy tắc cấp số</h4>
-                        <p>Tăng tự động <span class="num">0001</span> đến <span class="num">9999</span></p>
+                        <p>Tăng tự động <span class="num">0001</span> đến <span
+                                class="num">9999</span></p>
                         <p>Prefix: <span class="num">0001</span></p>
                         <p>Reset mỗi ngày</p>
                         <p>Ví dụ 201-2001</p>
@@ -97,10 +98,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    @foreach ($numbers as $item)
+                                        <tr>
+                                            <td>{{ $item->num_number }}</td>
+                                            <td>
+                                                @if ($item->num_status == 1)
+                                                    Đang chờ
+                                                @elseif($item->num_status == 2)
+                                                    Đã sử dụng
+                                                @elseif($item->num_status == 3)
+                                                    Bỏ qua
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -113,9 +124,9 @@
                             <p>Cập nhập danh sách</p>
                         </a>
                         <a href="" class="btn btn-default" style="width: 87px;white-space: unset;"><i
-                            class="fas fa-backspace"></i>
-                        <p>Quay lại</p>
-                    </a>
+                                class="fas fa-backspace"></i>
+                            <p>Quay lại</p>
+                        </a>
                     </div>
 
 

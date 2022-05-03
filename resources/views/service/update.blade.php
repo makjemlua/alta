@@ -31,22 +31,22 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Mã dịch vụ: *</label>
+                                        <label for="se_code" class="col-sm-6 col-form-label">Mã dịch vụ: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
-                                            @if ($errors->has('de_code'))
-                                                <div class="error">{{ $errors->first('de_code') }}</div>
+                                            <input type="text" name="se_code" class="form-control" id="se_code"
+                                                value="{{$service->se_code}}">
+                                            @if ($errors->has('se_code'))
+                                                <div class="error">{{ $errors->first('se_code') }}</div>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_name" class="col-sm-6 col-form-label">Tên dịch vụ: *</label>
+                                        <label for="se_name" class="col-sm-6 col-form-label">Tên dịch vụ: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_name" class="form-control" id="de_name"
-                                                placeholder="Nhập tên thiết bị">
-                                            @if ($errors->has('de_name'))
-                                                <div class="error">{{ $errors->first('de_name') }}</div>
+                                            <input type="text" name="se_name" class="form-control" id="se_name"
+                                            value="{{$service->se_name}}">
+                                            @if ($errors->has('se_name'))
+                                                <div class="error">{{ $errors->first('se_name') }}</div>
                                             @endif
                                         </div>
                                     </div>
@@ -54,11 +54,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="de_username" class="col-sm-6 col-form-label">Mô tả: *</label>
+                                        <label for="se_describe" class="col-sm-6 col-form-label">Mô tả: *</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            @if ($errors->has('de_username'))
-                                                <div class="error">{{ $errors->first('de_username') }}</div>
+                                            <textarea class="form-control" name="se_describe" rows="3">{{$service->se_describe}}</textarea>
+                                            @if ($errors->has('se_describe'))
+                                                <div class="error">{{ $errors->first('se_describe') }}</div>
                                             @endif
                                         </div>
                                     </div>

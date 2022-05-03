@@ -115,11 +115,10 @@
                                     <td>{{ $service->se_name }}</td>
                                     <td>{{ $service->se_describe }}</td>
                                     <td width="160px">
-                                        @if ($service->se_active == 1)
-                                            <i class="fas fa-circle active"></i> Hoạt động
-                                        @else
-                                            <i class="fas fa-circle inactive"></i> Ngưng hoạt động
-                                        @endif
+                                        <a href="{{ route('service.action', ['active', $service->id]) }}">
+                                            <i class="{{$service->getStatus($service->se_active)['class']}}"></i> 
+                                            {{$service->getStatus($service->se_active)['name']}}
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="{{ route('service.detail', $service->id) }}">Chi tiết</a>
