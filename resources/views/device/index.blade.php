@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<style>
-    .text-sm {
-        font-size: 10px !important;
-    }
-</style>
+    <style>
+        .text-sm {
+            font-size: 10px !important;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('css/device.css') }}">
     <div class="content-wrapper">
         <!-- Main content -->
@@ -81,10 +81,10 @@
                                     <form action="" method="GET">
                                         <div class="form-group">
                                             <label>Từ khóa</label>
-                                            <input type="text" name="search" id="search"
-                                                class="search form-control" value="{{ \Request::get('search') }}" title="" placeholder="Nhập tên">
+                                            <input type="text" name="search" id="search" class="search form-control"
+                                                value="{{ \Request::get('search') }}" title="" placeholder="Nhập tên">
                                         </div>
-                                    </form> 
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -119,18 +119,16 @@
                                     <td>{{ $device->de_name }}</td>
                                     <td>{{ $device->de_ip }}</td>
                                     <td width="160px">
-                                        @if ($device->de_active == 1)
-                                            <i class="fas fa-circle active"></i> Hoạt động
-                                        @elseif($device->de_active == 2)
-                                            <i class="fas fa-circle inactive"></i> Ngưng hoạt động
-                                        @endif
+                                        <a href="{{ route('device.action', ['active', $device->id]) }}">
+                                            <i class="{{$device->getStatus($device->de_active)['class']}}"></i> 
+                                            {{$device->getStatus($device->de_active)['name']}}
+                                        </a>
                                     </td>
                                     <td width="160px">
-                                        @if ($device->de_connect == 1)
-                                            <i class="fas fa-circle active"></i> Kết nối
-                                        @elseif($device->de_connect == 2)
-                                            <i class="fas fa-circle inactive"></i> Mất kết nối
-                                        @endif
+                                        <a href="{{ route('device.action', ['connect', $device->id]) }}">
+                                            <i class="{{$device->getConnect($device->de_connect)['class']}}"></i> 
+                                            {{$device->getConnect($device->de_connect)['name']}}
+                                        </a>
                                     </td>
                                     <td>
                                         <p id="more-{{ $device->id }}" class="read-more">
@@ -149,16 +147,16 @@
                         </tbody>
                     </table>
                     <!-- Pagination -->
-        <div class="pagiWrap">
-            <div class="row">
-              <div class="col-md-4 col-sm-6 num-pagination">
-                <div class="showreslt">Hiển thị 1-5</div>
-              </div>
-              <div class="col-md-8 col-sm-6 text-right show-pagination">
-                {!! $devices->links() !!}
-              </div>
-            </div>
-          </div>
+                    <div class="pagiWrap">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 num-pagination">
+                                <div class="showreslt">Hiển thị 1-5</div>
+                            </div>
+                            <div class="col-md-8 col-sm-6 text-right show-pagination">
+                                {!! $devices->links() !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- /.card-body -->
