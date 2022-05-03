@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Number;
 
 class ServiceController extends Controller
 {
@@ -40,7 +41,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->insertOrUpdate($request);
+        return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -51,7 +53,14 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        return view('service.detail');
+        $service = Service::find($id);
+        //$numbers = $service->with('number:id,num_name')->where('id', $id)->get();
+        $numbers = Number::where('num_service_id', $id)->get();
+        $viewData = [
+            'service' => $service,
+            'numbers' => $numbers
+        ];
+        return view('service.detail', $viewData);
     }
 
     /**
@@ -62,7 +71,11 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        return view('service.update');
+        $service = Service::find($id);
+        $viewData = [
+            'service' => $service,
+        ];
+        return view('service.update', $viewData);
     }
 
     /**
@@ -74,7 +87,22 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->insertOrUpdate($request, $id);
+        return redirect()->back()->with('success', 'Cập nhập thành công');
+    }
+
+    public function insertOrUpdate(Request $request, $id = '')
+    {
+        $service = new Service();
+        if ($id) {
+            $service = Service::find($id);
+        }
+        $service->se_code = $request->se_code;
+        $service->se_name = $request->se_name;
+        $service->se_describe = $request->se_describe;
+        $service->se_active = 1;
+        //dd($service);
+        $service->save();
     }
 
     /**
@@ -86,5 +114,19 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function action($action, $id)
+    {
+        if ($action) {
+            $service = Service::find($id);
+            switch ($action) {
+                case 'active':
+                    $service->se_active = $service->se_active ? 0 : 1;
+                    $service->save();
+                    break;
+            }
+            return redirect()->back();
+        }
     }
 }

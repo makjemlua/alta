@@ -1,15 +1,20 @@
 @extends('layouts.app')
 @section('content')
-<style>label{
-    margin-left: 20px;
-    }
-    #datepicker{
-    width:180px; 
-    margin: 0 20px 20px 20px;
-    }
-    #datepicker > span:hover{
-    cursor: pointer;
-    }</style>
+    <style>
+        label {
+            margin-left: 20px;
+        }
+
+        #datepicker {
+            width: 180px;
+            margin: 0 20px 20px 20px;
+        }
+
+        #datepicker>span:hover {
+            cursor: pointer;
+        }
+
+    </style>
     <link rel="stylesheet" href="{{ asset('css/service.css') }}">
     <div class="content-wrapper">
         <!-- Main content -->
@@ -80,22 +85,22 @@
 
                                         <div class='col-md-6'>
                                             <div class="form-group">
-                                               <div class='input-group date' id='datetimepicker6'>
-                                                  <input type='text' class="form-control" />
-                                                  <span class="input-group-addon">
-                                                  <span class="glyphicon glyphicon-calendar"></span>
-                                                  </span>
-                                               </div>
+                                                <div class='input-group date' id='datetimepicker6'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                         </div>
-                                         <div class='col-md-6'>
+                                        </div>
+                                        <div class='col-md-6'>
                                             <div class="form-group">
-                                               <div class='input-group date' id='datetimepicker7'>
-                                                  <input type='text' class="form-control" />
-                                                  <span class="input-group-addon">
-                                                  <span class="glyphicon glyphicon-calendar"></span>
-                                                  </span>
-                                               </div>
+                                                <div class='input-group date' id='datetimepicker7'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -136,20 +141,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @php
+                                $i=1;
+                            @endphp
+                            @foreach ($numbers as $item)
                                 <tr>
-                                    <td>121</td>
-                                    <td>rf43g</td>
-                                    <td>f4f43</td>
-                                    <td>43g34</td>
-                                    <td>43g</td>
-                                    <td>g4g</td>
-                                    <td>43g</td>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$item->num_name}}</td>
+                                    <td>{{$item->num_service}}</td>
+                                    <td>{{date("H:i d/m/Y", strtotime($item->num_start_time))}}</td>
+                                    <td>{{date("H:i d/m/Y", strtotime($item->num_end_time))}}</td>
                                     <td>
-                                        <a href="{{route('number.detail', 1)}}">Chi tiết</a>
+                                        @if ($item->num_status == 1)
+                                            Đang chờ
+                                        @elseif($item->num_status == 2)
+                                            Đã sử dụng
+                                        @elseif($item->num_status == 3)
+                                            Bỏ qua
+                                        @endif
+                                    </td>
+                                    <td>{{$item->num_device}}</td>
+                                    <td>
+                                        <a href="{{ route('number.detail', $item->id) }}">Chi tiết</a>
                                     </td>
                                 </tr>
-                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -158,7 +174,7 @@
             </div>
             <div class="col-md-1 col-sm-1">
                 <div class="form-group">
-                    <a href="{{route('number.create')}}" class="btn btn-success button-add"><i
+                    <a href="{{ route('number.create') }}" class="btn btn-success button-add"><i
                             class="fas fa-plus-square"></i>
                         <p>Cấp số mới</p>
                     </a>
@@ -169,17 +185,17 @@
     </div>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             $('#datetimepicker6').datetimepicker({
                 format: 'YYYY-MM-DD'
             });
             $('#datetimepicker7').datetimepicker({
                 format: 'YYYY-MM-DD'
             });
-            $("#datetimepicker6").on("dp.change", function (e) {
+            $("#datetimepicker6").on("dp.change", function(e) {
                 $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
             });
-            $("#datetimepicker7").on("dp.change", function (e) {
+            $("#datetimepicker7").on("dp.change", function(e) {
                 $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
             });
         });

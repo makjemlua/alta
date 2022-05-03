@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use App\Models\Service;
 
 class Device extends Model
@@ -12,14 +13,39 @@ class Device extends Model
 
     protected $table = 'device';
 	protected $guarded = ['*'];
-    
-    protected $fillable = [
-        'de_name',
-        'de_code',
-        'de_service',
-    ];
 
-    public function services() {
-		return $this->belongsToMany(Service::class);
+    const STATUS_ACTIVE = 1;
+	const STATUS_INACTIVE = 0;
+
+    const STATUS_CONNECT = 1;
+	const STATUS_UNCONNECTED = 0;
+
+	protected $active = [
+		1 => [
+			'name' => 'Hoạt động',
+			'class' => 'fas fa-circle active',
+		],
+		0 => [
+			'name' => 'Ngưng hoạt động',
+			'class' => 'fas fa-circle inactive',
+		],
+	];
+
+    protected $connect = [
+		1 => [
+			'name' => 'Kết nối',
+			'class' => 'fas fa-circle active',
+		],
+		0 => [
+			'name' => 'Mất kết nối',
+			'class' => 'fas fa-circle inactive',
+		],
+	];
+	public function getStatus() {
+		return Arr::get($this->active, $this->de_active, '[N\A]');
+	}
+
+	public function getConnect() {
+		return Arr::get($this->connect, $this->de_connect, '[N\A]');
 	}
 }

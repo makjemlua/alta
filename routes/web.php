@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/device/edit/{id}', [DeviceController::class, 'edit'])->name('device.update');
     Route::post('/device/edit/{id}', [DeviceController::class, 'update']);
     Route::get('/device/detail/{id}', [DeviceController::class, 'show'])->name('device.detail');
-    Route::get('/device/delete/{id}', [DeviceController::class, 'destroy'])->name('device.destroy');
+    Route::get('/device/{action}/{id}', [DeviceController::class, 'action'])->name('device.action');
 
     //Service
     Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('service.update');
     Route::post('/service/edit/{id}', [ServiceController::class, 'update']);
     Route::get('/service/detail/{id}', [ServiceController::class, 'show'])->name('service.detail');
-    Route::get('/service/delete/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+    Route::get('/service/{action}/{id}', [ServiceController::class, 'action'])->name('service.action');
 
     //Number
     Route::get('/number', [NumberController::class, 'index'])->name('number.index');

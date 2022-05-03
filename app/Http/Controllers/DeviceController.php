@@ -131,4 +131,21 @@ class DeviceController extends Controller
     {
         //
     }
+
+    public function action($action, $id) {
+		if ($action) {
+			$device = Device::find($id);
+			switch ($action) {
+			case 'active':
+				$device->de_active = $device->de_active ? 0 : 1;
+				$device->save();
+				break;
+            case 'connect':
+				$device->de_connect = $device->de_connect ? 0 : 1;
+				$device->save();
+				break;
+			}
+		}
+		return redirect()->back();
+	}
 }

@@ -32,35 +32,34 @@
                                     <div class="col-md-6">
 
                                         <div class="form-group row">
-                                            <label for="product_name" class="col-sm-3 col-form-label">Họ tên: </label>
-                                            <div class="col-sm-9">
-                                                
-
+                                            <label for="product_name" class="col-sm-4 col-form-label">Họ tên:</label>
+                                            <div class="col-sm-8">
+                                                {{ $number->num_name }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="product_price" class="col-sm-3 col-form-label">Tên dịch vụ:
+                                            <label for="product_price" class="col-sm-4 col-form-label">Tên dịch vụ:
                                             </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <div class="col-sm-8">
+                                                {{ $number->num_service }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Số thứ tự: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Số thứ tự: </label>
+                                            <div class="col-sm-8">
+                                                {{ $number->num_number }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Thời gian cấp: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Thời gian cấp: </label>
+                                            <div class="col-sm-8">
+                                                {{date("H:i d/m/Y", strtotime($number->num_start_time))}}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Hạn sử dụng: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Hạn sử dụng: </label>
+                                            <div class="col-sm-8">
+                                                {{date("H:i d/m/Y", strtotime($number->num_end_time))}}
                                             </div>
                                         </div>
 
@@ -69,29 +68,35 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group row">
-                                            <label for="is_sales" class="col-sm-3 col-form-label">Nguồn cấp: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="is_sales" class="col-sm-4 col-form-label">Nguồn cấp: </label>
+                                            <div class="col-sm-8">
+                                                {{ $number->num_device }}
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Trạng thái: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Trạng thái: </label>
+                                            <div class="col-sm-8">
+                                                @if ($number->num_status == 1)
+                                                    Đang chờ
+                                                @elseif($number->num_status == 2)
+                                                    Đã sử dụng
+                                                @elseif($number->num_status == 3)
+                                                    Bỏ qua
+                                                @endif
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Số điện thoại: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Số điện thoại: </label>
+                                            <div class="col-sm-8">
+                                                {{ $number->num_phone }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="description" class="col-sm-3 col-form-label">Địa chỉ email: </label>
-                                            <div class="col-sm-9">
-                                                
+                                            <label for="description" class="col-sm-4 col-form-label">Địa chỉ email: </label>
+                                            <div class="col-sm-8">
+                                                {{ $number->num_email }}
                                             </div>
                                         </div>
 
@@ -104,8 +109,7 @@
                     </div>
                     <div class="col-md-1 col-sm-1">
                         <div class="form-group">
-                            <a href="" class="btn btn-success"><i
-                                    class="fas fa-backspace"></i> Quay lại</a>
+                            <a href="" class="btn btn-success"><i class="fas fa-backspace"></i> Quay lại</a>
                         </div>
                     </div>
                 </div>
