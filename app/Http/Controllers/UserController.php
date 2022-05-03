@@ -52,7 +52,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->insertOrUpdate($request);
-        return redirect()->back()->with('success', 'Thêm mới thành công');
+        return redirect()
+            ->back()
+            ->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -74,7 +76,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('account.update');
+        $user = User::find($id);
+        $viewData = [
+            'user' => $user,
+        ];
+        return view('account.update', $viewData);
     }
 
     /**
@@ -110,7 +116,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->group_role = $request->group_role;
-        $user->name = $request->name;  //Ten dang nhap
+        $user->name = $request->name; //Ten dang nhap
         $user->password = $request->password;
         $user->active = $request->active;
         //dd($user);

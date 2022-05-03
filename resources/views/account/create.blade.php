@@ -31,33 +31,33 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Họ tên: *</label>
+                                        <label for="username" class="col-sm-6 col-form-label">Họ tên: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="username" class="form-control" id="username"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Số điện thoại: *</label>
+                                        <label for="phone" class="col-sm-6 col-form-label">Số điện thoại: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="phone" class="form-control" id="phone"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Email: *</label>
+                                        <label for="email" class="col-sm-6 col-form-label">Email: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="email" class="form-control" id="email"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Vai trò: *</label>
+                                        <label for="group_role" class="col-sm-6 col-form-label">Vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <select name="is_sale" id="is_sale" class="form-control">
+                                            <select name="group_role" id="group_role" class="form-control">
                                                 <option value="1">Kế toán</option>
                                                 <option value="2">Quản lý</option>
                                                 <option value="3">Admin</option>
@@ -70,33 +70,33 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên đăng nhập: *</label>
+                                        <label for="name" class="col-sm-6 col-form-label">Tên đăng nhập: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="name" class="form-control" id="name"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Mật khẩu: *</label>
+                                        <label for="password" class="col-sm-6 col-form-label">Mật khẩu: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="password" class="form-control" id="password"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Nhập lại mật khẩu: *</label>
+                                        <label for="repassword" class="col-sm-6 col-form-label">Nhập lại mật khẩu: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
+                                            <input type="text" name="repassword" class="form-control" id="repassword"
                                                 placeholder="">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tình trạng: *</label>
+                                        <label for="active" class="col-sm-6 col-form-label">Tình trạng: *</label>
                                         <div class="col-sm-9">
-                                            <select name="is_sale" id="is_sale" class="form-control">
+                                            <select name="active" id="active" class="form-control">
                                                 <option value="1">Ngưng hoạt động</option>
                                                 <option value="2">Hoạt động</option>
                                             </select>

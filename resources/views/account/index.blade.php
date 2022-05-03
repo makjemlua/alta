@@ -121,7 +121,7 @@
                 <div class="form-group">
                     <a href="{{ route('account.create') }}" class="btn btn-success button-add"><i
                             class="fas fa-plus-square"></i>
-                        <p>Thêm vai trò</p>
+                        <p>Thêm tài khoản</p>
                     </a>
                 </div>
             </div>
