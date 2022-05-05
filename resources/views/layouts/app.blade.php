@@ -173,10 +173,10 @@
                               </button>
                           </li>
                           <li class="icon-avatar"><img
-                                  src="https://live.staticflickr.com/7418/27269083173_c3fd44968a_h.jpg" alt=""></li>
+                                  src="{{ asset('img/upload/'.Auth::user()->avatar) }}" alt=""></li>
                           <li class="icon-name">
                               <p class="xin-chao">Xin chao</p>
-                              <a href="{{route('user.index')}}" class="icon-user-name">Le Quynh Ai Van</a>
+                              <a href="{{route('user.index')}}" class="icon-user-name">{{Auth::user()->username}}</a>
                           </li>
                       </ol>
                   </div>

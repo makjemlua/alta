@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Number;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $numberAll = Number::count();
+        $numberUsed = Number::where('num_status', 2)->count();
+        $numberWaiting = Number::where('num_status', 1)->count();
+        $numberMissed = Number::where('num_status', 3)->count();
+
+        
+        //dd($numberUsed);
+        $viewData = [
+            'numberAll' => $numberAll,
+            'numberUsed' => $numberUsed,
+            'numberWaiting' => $numberWaiting,
+            'numberMissed' => $numberMissed
+        ];
+        return view('dashboard.index', $viewData);
     }
 }

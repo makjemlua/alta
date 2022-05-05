@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //User
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::post('/user', [UserController::class, 'uploadAvatar']);
 
     //Device
     Route::get('/device', [DeviceController::class, 'index'])->name('device.index');

@@ -26,3 +26,61 @@ a.btn.btn-logout {
 .main-sidebar {
     background-color: #FFFFFF;
 }
+.info-box-icon {
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50% !important;
+}
+.info-box-text {
+    white-space: unset !important;
+    font-size: 15px;
+    font-weight: bold;
+}
+.ctn-dasboard {
+    margin-right: 0;
+    margin-left: 0;
+    width: 1269px;
+    max-width: 1269px;
+}
+.overview {
+    width: 100%;
+    height: 250px;
+}
+.calendar {
+    width: 100%;
+    height: 250px;
+    background-color:aquamarine;
+}
+.ui-datepicker {
+    width: 100% !important;
+    height: 18em !important;
+}
+.ui-datepicker table {
+    height: 16em !important;
+}
+.ui-state-active {
+    border:#FF7506 !important;
+    background-color: #FF7506 !important;
+}
+.ui-state-default {
+    border: unset !important;
+    border-radius: 8px !important;
+}
+.overview-active {
+    font-size: 10px;
+    font-weight: bold;
+}
+.overview-cpn{
+    padding: 4px;
+    border-radius: 10px;
+    margin: 4px 0;
+    box-shadow:2px 2px #FF7506;
+}
+.overview-device {
+    font-size: 12px;
+}
+.dial {
+    margin-top: -30px !important;
+    margin-left: 7px !important;
+    font-size: 10px !important;
+}
