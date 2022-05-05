@@ -122,4 +122,23 @@ class UserController extends Controller
         //dd($user);
         $user->save();
     }
+    public function uploadAvatar(Request $request){
+        $firstString = substr($request->product_name, 0, 1); // Lấy kí tự đầu
+        $rand = substr(md5(microtime()), rand(0, 26), 9); // Mã hóa md5 thời gian hiện tại,vị trí bắt đầu là random từ 0-26, có độ dài 9 kí tự
+        $rand = str_pad($rand, 9, '0', STR_PAD_LEFT); // Thêm vào chuỗi một chuỗi 9 phần tử, bỏ vào giá trị cuối
+
+        $user = Auth::user();
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $fileName = time() . '_' . rand(0, 9999999) . '_' . md5(rand(0, 9999999)) . '.' . $file->getClientOriginalExtension();
+
+            $file->move('img\upload', $fileName);
+            $user->avatar = $fileName;
+        }
+        //dd($user);
+        $user->save();
+        return redirect()
+            ->back()
+            ->with('success', 'Update ảnh thành công');
+    }
 }
