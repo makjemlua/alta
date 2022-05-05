@@ -56,7 +56,7 @@
                             <div class="col-md-2">
                                 <select name="num_service" id="num_service" class="form-control">
                                     @foreach ($service as $item)
-                                        <option value="{{ $item->id }}">{{ $item->se_name }}</option>
+                                        <option value="{{ $item->id }}|{{ $item->se_name }}">{{ $item->se_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

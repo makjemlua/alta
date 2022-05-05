@@ -59,8 +59,8 @@ class NumberController extends Controller
         $num = IdGenerator::generate(['table' => 'numbers', 'field' => 'num_number', 'length' => 6, 'prefix' => $day, 'reset_on_prefix_change' => true]);
         $number = new Number();
         $number->num_name = $user->username;
-        $num_service = $number->where('num_service_id', $request->num_service)->first(); //Tên dịch vụ
-        $number->num_service = $num_service->num_service;
+        $result_explode = explode('|', $request->num_service); // Tạo mảng
+        $number->num_service = $result_explode[1]; //Tên dịch vụ
         $number->num_number = $num; //Số thứ tự
         $number->num_start_time = date("Y-m-d H:i:s"); //Thời gian cấp
         $number->num_end_time = date("Y-m-d 17:30:00"); //Hạn sử dụng
@@ -68,7 +68,7 @@ class NumberController extends Controller
         $number->num_status = 1;
         $number->num_phone = $user->phone;
         $number->num_email = $user->email;
-        $number->num_service_id = $request->num_service; //Mã dịch vụ
+        $number->num_service_id = $result_explode[0]; //Mã dịch vụ
         //dd($number);
         $number->save();
         return redirect()->back()->with('number', 'ABC');
