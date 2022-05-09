@@ -74,22 +74,28 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="tab-content p-0">
-
+                                <div class=""
+                                    style="position: absolute; top:-1px; right:0; width:230px;z-index: 999;">
+                                    <div class="form-group">
+                                        <label for="select_chart" class="col-sm-6 control-label">Xem theo</label>
+                                        <div class="col-sm-6">
+                                            <select name="select_chart" id="select_chart" class="form-control">
+                                                <option id="select_chart_" value="1"
+                                                    data-url="{{ route('home.index.day') }}">Ngày</option>
+                                                <option id="select_chart_" value="2"
+                                                    data-url="{{ route('home.index.month') }}">Tuần</option>
+                                                <option id="select_chart_" value="3"
+                                                    data-url="{{ route('home.index.week') }}">Tháng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="chart tab-pane active" id="revenue-chart"
                                     style="position: relative; height: 450px;">
-                                    <canvas id="myChart" height="475" style="height: 300px; display: block; width: 676px;"
-                                        width="845" class="chartjs-render-monitor"></canvas>
-                                    <div class="" style="position: absolute; top:-1px; right:0; width:230px;">
-                                        <div class="form-group">
-                                            <label for="is_sale" class="col-sm-6 control-label">Xem theo</label>
-                                            <div class="col-sm-6">
-                                                <select name="is_sale" id="is_sale" class="form-control">
-                                                    <option value="0">Ngày</option>
-                                                    <option value="1">Tuần</option>
-                                                    <option value="2">Tháng</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    <canvas id="myChart"></canvas>
+
+                                    <div style="position: absolute; top: 0; left: 0;">
+                                        Tháng {{ $month }}/{{ $year }}
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +108,8 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="device" value="75" class="dial" data-min="0" data-max="100">
+                                    <input type="text" name="device" value="75" class="dial" data-min="0"
+                                        data-max="100">
                                 </div>
                                 <div class="col-md-3 overview-device">
                                     <div>123213</div>
@@ -119,7 +126,8 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="service" value="75" class="dial" data-min="0" data-max="100">
+                                    <input type="text" name="service" value="75" class="dial" data-min="0"
+                                        data-max="100">
                                 </div>
                                 <div class="col-md-3 overview-device">
                                     <div>123213</div>
@@ -136,7 +144,8 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="number" value="75" class="dial" data-min="0" data-max="100">
+                                    <input type="text" name="number" value="75" class="dial" data-min="0"
+                                        data-max="100">
                                 </div>
                                 <div class="col-md-3 overview-device">
                                     <div>123213</div>
@@ -182,6 +191,46 @@
                 'fgColor': '#FF7506'
             });
         });
+        $(function() {
+            $(document).on('change', 'select', function() {
+                let form_data = $('#select_chart').serialize();
+                var value = $('#select_chart :selected').val();
+                if (value == 1) {
+                    $.ajax({
+                        url: 'home/day',
+                        //data: form_data,
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        success: function(respose) {
+                            $('#revenue-chart').html(respose);
+                        }
+                    });
+                }
+                else if(value == 2){
+                    $.ajax({
+                        url: 'home/week',
+                        data: form_data,
+                        type: 'GET',
+                        success: function(respose) {
+                            $('#revenue-chart').html(respose);
+                        }
+                    });
+                }
+                else if(value == 3){
+                    $.ajax({
+                        url: 'home/month',
+                        data: form_data,
+                        type: 'GET',
+                        success: function(respose) {
+                            $('#revenue-chart').html(respose);
+                        }
+                    });
+                }
+            })
+        });
+        var datas = "{{ $dates }}";
+        var dataChart = JSON.parse(datas.replace(/&quot;/g, '"'));
+        var arr = Object.keys(dataChart).map(function (key) { return dataChart[key]; });
     </script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
 @endsection

@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Dashboard
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/home/day', [HomeController::class, 'chartDay'])->name('home.index.day');
+    Route::get('/home/month', [HomeController::class, 'chartMonth'])->name('home.index.month');
+    Route::get('/home/week', [HomeController::class, 'chartWeek'])->name('home.index.week');
 
     //User
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
