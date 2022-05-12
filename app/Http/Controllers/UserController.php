@@ -92,7 +92,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->insertOrUpdate($request, $id);
+        return redirect()
+            ->back()
+            ->with('success', 'Cập nhập thành công');
     }
 
     /**
@@ -117,7 +120,9 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->group_role = $request->group_role;
         $user->name = $request->name; //Ten dang nhap
-        $user->password = $request->password;
+        if($request->password !== ''){
+                $user->password = bcrypt($request->password);
+            }
         $user->active = $request->active;
         //dd($user);
         $user->save();

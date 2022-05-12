@@ -107,7 +107,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('account.update', 1) }}">Cập nhập</a>
+                                        <a href="{{ route('account.update', $item->id) }}">Cập nhập</a>
                                     </td>
                                 </tr>
                             @endforeach
