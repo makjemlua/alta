@@ -8,7 +8,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="breadCrumb">
-                            <h4><span>Dịch vụ</span> > <a href="">Danh sách dịch vụ</a></h4>
+                            <h4><span>Dịch vụ</span> > <a href="">Danh sách vai trò</a></h4>
                         </div>
                     </div>
 
@@ -19,29 +19,29 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="container-fluid">
-                <h4 class="">Quản lý dịch vụ</h4>
+                <h4 class="">Quản lý vai trò</h4>
                 <div class="card card-info">
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-                        <p>Thông tin dịch vụ</p>
+                        <p>Thông tin vai trò</p>
                         <form method="POST" action="" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="ro_name" class="col-sm-6 col-form-label">Tên vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
+                                            <input type="text" name="ro_name" class="form-control" id="ro_name"
+                                                placeholder="Nhập tên vai trò">
                                             
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_username" class="col-sm-6 col-form-label">Mô tả: *</label>
+                                        <label for="ro_describe" class="col-sm-6 col-form-label">Mô tả: *</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" name="ro_describe" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             
                                         </div>
                                     </div>

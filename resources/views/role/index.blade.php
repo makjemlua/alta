@@ -69,16 +69,16 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>121</td>
-                                <td>6</td>
-                                <td>fegr</td>
-                                <td>
-                                    <a href="{{ route('role.update', 1) }}">Cập nhập</a>
-                                </td>
-                            </tr>
-
+                            @foreach ($roles as $item)
+                                <tr>
+                                    <td>{{$item->ro_name}}</td>
+                                    <td>6</td>
+                                    <td>{{$item->ro_describe}}</td>
+                                    <td>
+                                        <a href="{{ route('role.update', $item->id) }}">Cập nhập</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

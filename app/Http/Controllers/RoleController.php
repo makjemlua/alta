@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class RoleController extends Controller
 {
@@ -13,7 +14,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('role.index');
+        $roles = Role::whereRaw(1);
+        $roles = $roles->paginate(10);
+        $viewData = [
+            'roles' => $roles
+        ];
+        return view('role.index', $viewData);
     }
 
     /**
@@ -34,7 +40,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->insertOrUpdate($request);
+        return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -69,6 +76,18 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function insertOrUpdate(Request $request, $id = '')
+    {
+        $role = new Role();
+        if ($id) {
+            $role = Role::find($id);
+        }
+        $role->ro_name = $request->ro_name;
+        $role->ro_describe = $request->ro_describe;
+        //dd($role);
+        $role->save();
     }
 
     /**
