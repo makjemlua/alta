@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Notification;
 
 class LogUserController extends Controller
 {
@@ -13,7 +14,11 @@ class LogUserController extends Controller
      */
     public function index()
     {
-        return view('loguser.index');
+        $logs = Notification::whereRaw(1)->paginate(10);
+        $viewData = [
+            'logs' => $logs
+        ];
+        return view('loguser.index', $viewData);
     }
 
     /**

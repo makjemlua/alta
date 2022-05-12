@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Device;
 use App\Models\Service;
 use App\Http\Requests\RequestDevice;
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class DeviceController extends Controller
 {
@@ -56,6 +58,14 @@ class DeviceController extends Controller
     public function store(RequestDevice $requestDevice)
     {
         $this->insertOrUpdate($requestDevice);
+
+        $name = Auth::user()->name;
+        $notification = new Notification();
+        $notification->no_name = $name;
+        $notification->no_ip = $requestDevice->ip();
+        $notification->no_describe = 'Thêm mới thiết bị '.$requestDevice->de_name;
+        $notification->save();
+
         return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 
@@ -101,6 +111,14 @@ class DeviceController extends Controller
     public function update(Request $requestDevice, $id)
     {
         $this->insertOrUpdate($requestDevice, $id);
+
+        $name = Auth::user()->name;
+        $notification = new Notification();
+        $notification->no_name = $name;
+        $notification->no_ip = $requestDevice->ip();
+        $notification->no_describe = 'Cập nhập thiết bị '.$requestDevice->de_name;
+        $notification->save();
+
         return redirect()->back()->with('success', 'Cập nhập thành công');
     }
 

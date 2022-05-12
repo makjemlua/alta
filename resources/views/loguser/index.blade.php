@@ -86,14 +86,14 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>ewrgr</td>
-                                <td>3556</td>
-                                <td>3423.532.5325.324</td>
-                                <td>t433tgtrg</td>
-                            </tr>
-
+                            @foreach ($logs as $item)
+                                <tr>
+                                    <td>{{$item->no_name}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->no_ip}}</td>
+                                    <td>{{$item->no_describe}}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

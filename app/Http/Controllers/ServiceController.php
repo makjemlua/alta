@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Number;
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -42,7 +44,17 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->insertOrUpdate($request);
-        return redirect()->back()->with('success', 'Thêm mới thành công');
+
+        $name = Auth::user()->name;
+        $notification = new Notification();
+        $notification->no_name = $name;
+        $notification->no_ip = $request->ip();
+        $notification->no_describe = 'Thêm mới dịch vụ '.$request->se_name;
+        $notification->save();
+
+        return redirect()
+            ->back()
+            ->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -58,7 +70,7 @@ class ServiceController extends Controller
         $numbers = Number::where('num_service_id', $id)->get();
         $viewData = [
             'service' => $service,
-            'numbers' => $numbers
+            'numbers' => $numbers,
         ];
         return view('service.detail', $viewData);
     }
@@ -88,7 +100,17 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $this->insertOrUpdate($request, $id);
-        return redirect()->back()->with('success', 'Cập nhập thành công');
+
+        $name = Auth::user()->name;
+        $notification = new Notification();
+        $notification->no_name = $name;
+        $notification->no_ip = $request->ip();
+        $notification->no_describe = 'Cập nhập thông tin dịch vụ '.$request->se_name;
+        $notification->save();
+        
+        return redirect()
+            ->back()
+            ->with('success', 'Cập nhập thành công');
     }
 
     public function insertOrUpdate(Request $request, $id = '')
