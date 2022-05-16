@@ -55,12 +55,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="group_role" class="col-sm-6 col-form-label">Vai trò: *</label>
+                                        <label for="role" class="col-sm-6 col-form-label">Vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <select name="group_role" id="group_role" class="form-control">
-                                                <option value="1">Kế toán</option>
-                                                <option value="2">Quản lý</option>
-                                                <option value="3">Admin</option>
+                                            <select name="role" id="role" class="form-control">
+                                                @foreach ($roles as $item)
+                                                    <option value="{{$item->name}}">{{$item->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

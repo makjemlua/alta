@@ -34,37 +34,45 @@
                                         <label for="username" class="col-sm-6 col-form-label">Họ tên: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="username" class="form-control" id="username"
-                                                placeholder="Nhập tên" value="{{$user->username}}">
-                                            
+                                                placeholder="Nhập tên" value="{{ $user->username }}">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="col-sm-6 col-form-label">Số điện thoại: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="phone" class="form-control" id="phone"
-                                                placeholder="Nhập số điện thoại" value="{{$user->phone}}">
-                                            
+                                                placeholder="Nhập số điện thoại" value="{{ $user->phone }}">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="col-sm-6 col-form-label">Email: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="email" class="form-control" id="email"
-                                                placeholder="Nhập email" value="{{$user->email}}">
-                                            
+                                                placeholder="Nhập email" value="{{ $user->email }}">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="group_role" class="col-sm-6 col-form-label">Vai trò: *</label>
+                                        <label for="role" class="col-sm-6 col-form-label">Vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <select name="group_role" id="group_role" class="form-control">
-                                                <option value="1">Kế toán</option>
-                                                <option value="2">Quản lý</option>
-                                                <option value="3">Admin</option>
+                                            <select name="role" id="role" class="form-control">
+                                                <option value="{{ old('role', isset($user->group_role) ? $user->group_role : '') }}">
+                                                    @if (isset($user->group_role))
+                                                        {{$user->group_role}}
+                                                    @else
+                                                        --Chọn--
+                                                    @endif
+                                                </option>
+                                                @foreach ($roles as $item)
+                                                    <option value="{{ $item->name }}">
+                                                        {{ $item->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -73,24 +81,24 @@
                                         <label for="name" class="col-sm-6 col-form-label">Tên đăng nhập: *</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="name" class="form-control" id="name"
-                                                placeholder="Nhập tên đăng nhập" value="{{$user->name}}">
-                                            
+                                                placeholder="Nhập tên đăng nhập" value="{{ $user->name }}">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="col-sm-6 col-form-label">Mật khẩu: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="password" class="form-control" id="password"
+                                            <input type="password" name="password" class="form-control" id="password"
                                                 placeholder="Nhập mật khẩu" value="">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="repassword" class="col-sm-6 col-form-label">Nhập lại mật khẩu: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="repassword" class="form-control" id="repassword"
+                                            <input type="password" name="repassword" class="form-control" id="repassword"
                                                 placeholder="Nhập lại mật khẩu" value="">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -108,8 +116,8 @@
 
                             </div>
                             <div class="form-group text-center">
-                                <a href="" class="btn btn-default" name="cancel"
-                                    class="form-control" id="cancel">Hủy bỏ</a>
+                                <a href="" class="btn btn-default" name="cancel" class="form-control" id="cancel">Hủy
+                                    bỏ</a>
                                 <button type="submit" class="btn btn-success" name="submit" class="form-control"
                                     id="submit">Thêm</button>
                             </div>

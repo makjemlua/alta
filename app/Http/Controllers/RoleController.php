@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\RoleHasPermissions;
 
 class RoleController extends Controller
 {
@@ -17,7 +19,7 @@ class RoleController extends Controller
         $roles = Role::whereRaw(1);
         $roles = $roles->paginate(10);
         $viewData = [
-            'roles' => $roles
+            'roles' => $roles,
         ];
         return view('role.index', $viewData);
     }
@@ -27,7 +29,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('role.create');
     }
@@ -40,8 +42,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->insertOrUpdate($request);
-        return redirect()->back()->with('success', 'Thêm mới thành công');
+        $role = Role::create([
+            'name' => $request->name,
+            'guard_name' => 'web',
+            'description' => $request->description,
+        ]);
+
+        $permission = $request->input('role');
+        $role->givePermissionTo($permission);
+        return redirect()
+            ->back()
+            ->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -63,7 +74,19 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        return view('role.update');
+        $data = [];
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        $roleHasPermission = RoleHasPermissions::where('role_id', $id)->get();
+        $plucked = $roleHasPermission->pluck('permission_id')->all();
+        $viewData = [
+            'role' => $role,
+            'permissions' => $permissions,
+            'roleHasPermission' => $roleHasPermission,
+            'plucked' => $plucked,
+        ];
+
+        return view('role.update', $viewData);
     }
 
     /**
@@ -75,19 +98,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    public function insertOrUpdate(Request $request, $id = '')
-    {
-        $role = new Role();
-        if ($id) {
-            $role = Role::find($id);
-        }
-        $role->ro_name = $request->ro_name;
-        $role->ro_describe = $request->ro_describe;
-        //dd($role);
+        $role = Role::find($id);
+        $role->name = $request->name;
+        $role->description = $request->description;
+        $permission = $request->input('role');
+        $role->syncPermissions($permission);
+        $role->givePermissionTo($permission);
         $role->save();
+        return redirect()
+            ->back()
+            ->with('success', 'Cập nhập thành công');
     }
 
     /**

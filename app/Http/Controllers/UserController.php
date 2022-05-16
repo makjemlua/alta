@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Service;
+use App\Models\Number;
 use Illuminate\Support\Facades\Auth;
+Use Carbon\Carbon;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +27,7 @@ class UserController extends Controller
         $viewData = [
             'user' => $user,
         ];
-        return view('user.index', $viewData);
+        return view('info.index', $viewData);
     }
 
     public function listUser()
@@ -40,7 +47,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('account.create');
+        $roles = Role::all();
+        $viewData = [
+            'roles'=> $roles
+        ];
+        return view('account.create', $viewData);
     }
 
     /**
@@ -74,11 +85,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $roles = Role::all();
         $user = User::find($id);
         $viewData = [
             'user' => $user,
+            'roles' => $roles
         ];
         return view('account.update', $viewData);
     }
@@ -118,11 +131,13 @@ class UserController extends Controller
         $user->username = $request->username; //Ho ten
         $user->phone = $request->phone;
         $user->email = $request->email;
-        $user->group_role = $request->group_role;
+        $user->group_role = $request->role;
+        $roles = Role::all();
+        $role = $request->role;
+        $user->syncRoles([]);
+        $user->assignRole($role);
         $user->name = $request->name; //Ten dang nhap
-        if($request->password !== ''){
-                $user->password = bcrypt($request->password);
-            }
+        $user->password = $request->password ? bcrypt($request->password) : $user->password;
         $user->active = $request->active;
         //dd($user);
         $user->save();
@@ -145,5 +160,38 @@ class UserController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Update ảnh thành công');
+    }
+    public function number()
+    {
+        $service = Service::all();
+        $number = Number::orderBy('id', 'desc')->first();
+        $viewData = [
+            'service' => $service,
+            'number' => $number
+        ];
+        return view('user.index', $viewData);
+    }
+
+    public function numberStore(Request $request)
+    {
+        $device = Auth::check() ? 'Hệ thống' : 'Kiosk';
+        $day = date("d");
+        $day = (int)$day;
+        $num = IdGenerator::generate(['table' => 'numbers', 'field' => 'num_number', 'length' => 6, 'prefix' => $day, 'reset_on_prefix_change' => true]);
+        $number = new Number();
+        $number->num_name = $request->username;
+        $result_explode = explode('|', $request->num_service); // Tạo mảng
+        $number->num_service = $result_explode[1]; //Tên dịch vụ
+        $number->num_number = $num; //Số thứ tự
+        $number->num_start_time = date("Y-m-d H:i:s"); //Thời gian cấp
+        $number->num_end_time = date("Y-m-d 17:30:00"); //Hạn sử dụng
+        $number->num_device = $device;
+        $number->num_status = 1;
+        $number->num_phone = $request->phone;
+        $number->num_email = $request->email;
+        $number->num_service_id = $result_explode[0]; //Mã dịch vụ
+        //dd($number);
+        $number->save();
+        return redirect()->back()->with('number', 'ABC');
     }
 }

@@ -91,13 +91,7 @@
                                     <td>{{$item->phone}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>
-                                        @if ($item->group_role == 1)
-                                            Kế toán
-                                        @elseif($item->group_role == 2)
-                                            Quản lý
-                                        @elseif($item->group_role == 3)
-                                            Admin
-                                        @endif
+                                        {{$item->group_role}}
                                     </td>
                                     <td>
                                         @if ($item->active == 1)

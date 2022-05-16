@@ -71,9 +71,9 @@
                         <tbody>
                             @foreach ($roles as $item)
                                 <tr>
-                                    <td>{{$item->ro_name}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td>6</td>
-                                    <td>{{$item->ro_describe}}</td>
+                                    <td>{{$item->description}}</td>
                                     <td>
                                         <a href="{{ route('role.update', $item->id) }}">Cập nhập</a>
                                     </td>

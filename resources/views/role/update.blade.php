@@ -31,18 +31,19 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="de_code" class="col-sm-6 col-form-label">Tên vai trò: *</label>
+                                        <label for="name" class="col-sm-6 col-form-label">Tên vai trò: *</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="de_code" class="form-control" id="de_code"
-                                                placeholder="Nhập mã thiết bị">
-                                            
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                value="{{ $role->name }}" placeholder="Tên vai trò">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="de_username" class="col-sm-6 col-form-label">Mô tả: *</label>
+                                        <label for="description" class="col-sm-6 col-form-label">Mô tả: *</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            
+                                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
+                                                rows="3">{{ $role->description }}</textarea>
+
                                         </div>
                                     </div>
                                 </div>
@@ -52,53 +53,32 @@
                                     <p>Phân quyền chức năng</p>
                                     <h4>Nhóm chức năng A</h4>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
+                                        <input class="form-check-input" type="checkbox" id="checkAll" name="role[]"
+                                            value="">
+                                        <label class="form-check-label" for="role">
                                             Tất cả
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng A
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng B
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng C
                                         </label>
                                     </div>
 
-                                    <h4>Nhóm chức năng B</h4>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Tất cả
+                                        <input class="form-check-input" type="checkbox" name="role[]" value="1"
+                                            {{ in_array('1', $plucked) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="role">
+                                            Chức năng Xem
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng X
+                                        <input class="form-check-input" type="checkbox" name="role[]" value="2"
+                                            {{ in_array('2', $plucked) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="role">
+                                            Chức năng Thêm, Xóa, Sửa
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng Y
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Chức năng Z
+                                        <input class="form-check-input" type="checkbox" name="role[]" value="3"
+                                            {{ in_array('3', $plucked) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="role">
+                                            Chức năng Truy cập tất cả
                                         </label>
                                     </div>
 
@@ -107,8 +87,8 @@
 
                             </div>
                             <div class="form-group text-center">
-                                <a href="" class="btn btn-default" name="cancel"
-                                    class="form-control" id="cancel">Hủy bỏ</a>
+                                <a href="" class="btn btn-default" name="cancel" class="form-control" id="cancel">Hủy
+                                    bỏ</a>
                                 <button type="submit" class="btn btn-success" name="submit" class="form-control"
                                     id="submit">Thêm</button>
                             </div>
@@ -119,4 +99,10 @@
             </div>
         </section>
     </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script language="JavaScript">
+        $("#checkAll").click(function() {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
 @endsection
