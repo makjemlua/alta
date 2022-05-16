@@ -44,82 +44,82 @@
               </p>
             </a>
           </li> -->
-
-          <li class="nav-item">
-            <a href="{{route('home.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{route('device.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Thiết bị
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{route('service.index')}}" class="nav-link">
-              <i class="nav-icon fab fa-product-hunt"></i>
-              <p>
-                Dịch vụ
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{route('number.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>
-                Cấp số
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{route('report.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>
-                Báo cáo
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+          
+            <li class="nav-item">
+              <a href="{{route('home.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
-                    Cài đặt hệ thống
-                    <i class="fas fa-angle-left right"></i>
+                  Dashboard
                 </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-                <li class="nav-item">
-                    <a href="{{route('role.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Quản lý vai trò</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('account.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Quản lý tài khoản</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('log.index')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Nhật ký người dùng</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="{{route('device.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Thiết bị
+                </p>
+              </a>
+            </li>
 
+            <li class="nav-item">
+              <a href="{{route('service.index')}}" class="nav-link">
+                <i class="nav-icon fab fa-product-hunt"></i>
+                <p>
+                  Dịch vụ
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{route('number.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-shopping-cart"></i>
+                <p>
+                  Cấp số
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{route('report.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-shopping-cart"></i>
+                <p>
+                  Báo cáo
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                      Cài đặt hệ thống
+                      <i class="fas fa-angle-left right"></i>
+                  </p>
+              </a>
+              <ul class="nav nav-treeview" style="display: none;">
+                  <li class="nav-item">
+                      <a href="{{route('role.index')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Quản lý vai trò</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{route('account.index')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Quản lý tài khoản</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{route('log.index')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Nhật ký người dùng</p>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          
         </ul>
         <li class="nav-item button-logout">
           <a href="" class="nav-link">
