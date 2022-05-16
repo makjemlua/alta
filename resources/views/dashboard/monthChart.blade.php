@@ -40,7 +40,7 @@
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: arr,
-            tension: 0,
+            tension: 0.4,
         }]
     };
     // </block:setup>
