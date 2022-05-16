@@ -13,6 +13,17 @@
         #datepicker>span:hover {
             cursor: pointer;
         }
+        .num-pagination {
+            position: absolute;
+            bottom: 10;
+        }
+
+        .show-pagination {
+            position: absolute;
+            bottom: 10;
+            right: 150px;
+            margin: 5px;
+        }
 
     </style>
     <link rel="stylesheet" href="{{ asset('css/service.css') }}">
@@ -142,15 +153,15 @@
                         </thead>
                         <tbody>
                             @php
-                                $i=1;
+                                $i = 1;
                             @endphp
                             @foreach ($numbers as $item)
                                 <tr>
-                                    <td>{{$i++}}</td>
-                                    <td>{{$item->num_name}}</td>
-                                    <td>{{$item->num_service}}</td>
-                                    <td>{{date("H:i d/m/Y", strtotime($item->num_start_time))}}</td>
-                                    <td>{{date("H:i d/m/Y", strtotime($item->num_end_time))}}</td>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $item->num_name }}</td>
+                                    <td>{{ $item->num_service }}</td>
+                                    <td>{{ date('H:i d/m/Y', strtotime($item->num_start_time)) }}</td>
+                                    <td>{{ date('H:i d/m/Y', strtotime($item->num_end_time)) }}</td>
                                     <td>
                                         @if ($item->num_status == 1)
                                             Đang chờ
@@ -160,7 +171,7 @@
                                             Bỏ qua
                                         @endif
                                     </td>
-                                    <td>{{$item->num_device}}</td>
+                                    <td>{{ $item->num_device }}</td>
                                     <td>
                                         <a href="{{ route('number.detail', $item->id) }}">Chi tiết</a>
                                     </td>
@@ -178,6 +189,16 @@
                             class="fas fa-plus-square"></i>
                         <p>Cấp số mới</p>
                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="pagiWrap">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 num-pagination">
+                    <div class="showreslt">Hiển thị 1-10</div>
+                </div>
+                <div class="col-md-8 col-sm-6 text-right show-pagination">
+                    {!! $numbers->links() !!}
                 </div>
             </div>
         </div>
