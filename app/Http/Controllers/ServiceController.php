@@ -15,11 +15,23 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $start = '';
+        $end = '';
         $services = Service::whereRaw(1);
+        if ($request->active) {
+            $services->where('se_active', $request->active);
+        }
+        if ($request->time_start && $request->time_end) {
+            $start = $request->time_start;
+            $end = $request->time_end;
+            $services->whereBetween('created_at', [$request->time_start, $request->time_end]);
+        }
         $services = $services->paginate(10);
         $viewData = [
+            'start' => $start,
+            'end' => $end,
             'services' => $services,
         ];
         return view('service.index', $viewData);
@@ -144,7 +156,7 @@ class ServiceController extends Controller
             $service = Service::find($id);
             switch ($action) {
                 case 'active':
-                    $service->se_active = $service->se_active ? 0 : 1;
+                    $service->se_active = $service->se_active ? 2 : 1;
                     $service->save();
                     break;
             }

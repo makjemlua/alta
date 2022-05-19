@@ -38,25 +38,34 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="is_sale" class="col-sm-12 control-label">Trạng thái hoạt động</label>
+                                        <label for="de_active" class="col-sm-12 control-label">Trạng thái hoạt động</label>
                                         <div class="col-sm-10">
-                                            <select name="is_sale" id="is_sale" class="form-control">
-                                                <option value="0">Tất cả</option>
-                                                <option value="1">Hoạt động</option>
-                                                <option value="2">Ngưng hoạt động</option>
+                                            <select name="active" id="de_active" class="form-control"
+                                            onchange="this.form.submit()">
+                                                <option value=""
+                                                    {{ \Request::get('active') == '' ? "selected='selected'" : '' }}>Tất
+                                                    cả
+                                                </option>
+                                                <option value="1"
+                                                    {{ \Request::get('active') == 1 ? "selected='selected'" : '' }}>Hoạt động
+                                                </option>
+                                                <option value="2"
+                                                    {{ \Request::get('active') == 2 ? "selected='selected'" : '' }}>Ngưng hoạt động
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-5">
+                                    <form action="" id="form-time">
                                     <div class="form-group">
                                         <label for="is_sale" class="col-sm-12 control-label">Chọn thời gian</label>
 
                                         <div class='col-md-5'>
                                             <div class="form-group">
                                                <div class='input-group date' id='datetimepicker6'>
-                                                  <input type='text' class="form-control" />
+                                                  <input type='text' class="form-control" name="time_start" {{ \Request::get('time_start')}} value="{{ $start }}"/>
                                                   <span class="input-group-addon">
                                                   <span class="glyphicon glyphicon-calendar"></span>
                                                   </span>
@@ -66,15 +75,22 @@
                                          <div class='col-md-5'>
                                             <div class="form-group">
                                                <div class='input-group date' id='datetimepicker7'>
-                                                  <input type='text' class="form-control" />
+                                                  <input type='text' class="form-control" name="time_end" {{ \Request::get('time_end')}} value="{{ $end }}"/>
                                                   <span class="input-group-addon">
                                                   <span class="glyphicon glyphicon-calendar"></span>
                                                   </span>
                                                </div>
                                             </div>
                                         </div>
-
+                                        <div class='col-md-2'>
+                                            <div class="form-group">
+                                               <div class='input-group date' id='datetimepicker7'>
+                                                  <button type="submit" class="btn btn-default">Xác nhận</button>
+                                               </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    </form>
                                 </div>
 
                                 <div class="col-md-3 align-content-end">
@@ -156,9 +172,16 @@
             });
             $("#datetimepicker6").on("dp.change", function (e) {
                 $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                $('#datetimepicker6').mouseleave(function (e) {
+                    //$(this).parents('form').submit();
+                })
             });
+            
             $("#datetimepicker7").on("dp.change", function (e) {
                 $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                $('#datetimepicker7').mouseleave(function (e) {
+                    //$(this).parents('form').submit();
+                })
             });
         });
     </script>
