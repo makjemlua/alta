@@ -15,17 +15,17 @@ class Device extends Model
 	protected $guarded = ['*'];
 
     const STATUS_ACTIVE = 1;
-	const STATUS_INACTIVE = 0;
+	const STATUS_INACTIVE = 2;
 
     const STATUS_CONNECT = 1;
-	const STATUS_UNCONNECTED = 0;
+	const STATUS_UNCONNECTED = 2;
 
 	protected $active = [
 		1 => [
 			'name' => 'Hoạt động',
 			'class' => 'fas fa-circle active',
 		],
-		0 => [
+		2 => [
 			'name' => 'Ngưng hoạt động',
 			'class' => 'fas fa-circle inactive',
 		],
@@ -36,7 +36,7 @@ class Device extends Model
 			'name' => 'Kết nối',
 			'class' => 'fas fa-circle active',
 		],
-		0 => [
+		2 => [
 			'name' => 'Mất kết nối',
 			'class' => 'fas fa-circle inactive',
 		],
