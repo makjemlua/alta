@@ -105,8 +105,9 @@
                                         <label for="active" class="col-sm-6 col-form-label">Tình trạng: *</label>
                                         <div class="col-sm-9">
                                             <select name="active" id="active" class="form-control">
-                                                <option value="1">Ngưng hoạt động</option>
-                                                <option value="2">Hoạt động</option>
+                                                <option value="{{$user->active}}">{{old('active',$user->active == 1 ? 'Hoạt động' : 'Ngưng hoạt động')}}</option>
+                                                <option value="1">Hoạt động</option>
+                                                <option value="2">Ngưng hoạt động</option>
                                             </select>
                                         </div>
                                     </div>
@@ -119,7 +120,7 @@
                                 <a href="" class="btn btn-default" name="cancel" class="form-control" id="cancel">Hủy
                                     bỏ</a>
                                 <button type="submit" class="btn btn-success" name="submit" class="form-control"
-                                    id="submit">Thêm</button>
+                                    id="submit">Cập nhập</button>
                             </div>
 
                         </form>

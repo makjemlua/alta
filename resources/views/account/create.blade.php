@@ -97,8 +97,8 @@
                                         <label for="active" class="col-sm-6 col-form-label">Tình trạng: *</label>
                                         <div class="col-sm-9">
                                             <select name="active" id="active" class="form-control">
-                                                <option value="1">Ngưng hoạt động</option>
-                                                <option value="2">Hoạt động</option>
+                                                <option value="1">Hoạt động</option>
+                                                <option value="2">Ngưng hoạt động</option>
                                             </select>
                                         </div>
                                     </div>

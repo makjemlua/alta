@@ -54,8 +54,10 @@ class LoginController extends Controller
         $credentials = $request->only('name', 'password');
 
 		if (\Auth::guard()->attempt($credentials)) {
-
-            //Return view product
+            if (Auth::guard('web')->user()->active == 2) {
+				Auth::guard('web')->logout();
+				return redirect()->back()->with('danger', 'Tài khoản của bạn đang bị khóa');
+			}
 			return redirect()->route('home.index')->with('success', 'Bạn đã đăng nhập thành công');
 		}
         //Return view login
