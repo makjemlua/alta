@@ -162,14 +162,11 @@
                                     <td>{{ $item->num_service }}</td>
                                     <td>{{ date('H:i d/m/Y', strtotime($item->num_start_time)) }}</td>
                                     <td>{{ date('H:i d/m/Y', strtotime($item->num_end_time)) }}</td>
-                                    <td>
-                                        @if ($item->num_status == 1)
-                                            Đang chờ
-                                        @elseif($item->num_status == 2)
-                                            Đã sử dụng
-                                        @elseif($item->num_status == 3)
-                                            Bỏ qua
-                                        @endif
+                                    <td width="160px">
+                                        <a href="{{ route('number.action', ['status', $item->id]) }}" name="status">
+                                            <i class="{{$item->getStatus($item->num_status)['class']}}"></i> 
+                                            {{$item->getStatus($item->num_status)['name']}}
+                                        </a>
                                     </td>
                                     <td>{{ $item->num_device }}</td>
                                     <td>

@@ -123,4 +123,23 @@ class NumberController extends Controller
     {
         //
     }
+
+    public function action(Request $request, $action, $id)
+    {
+        if ($action) {
+            $number = Number::find($id);
+            switch ($action) {
+                case 'status':
+                    if($number->num_status == 1){
+                        $number->num_status = 0;
+                    }
+                    elseif($number->num_status == 0){
+                        $number->num_status = 3;
+                    }
+                    $number->save();
+                    break;
+            }
+            return redirect()->back();
+        }
+    }
 }
