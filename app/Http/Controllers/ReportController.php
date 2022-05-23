@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
+use App\Models\Number;
 use Illuminate\Http\Request;
 use App\Exports\ReportExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,7 +16,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::whereRaw(1);
+        $reports = Number::whereRaw(1);
         $reports = $reports->paginate(10);
         $viewData = [
             'reports' => $reports,
@@ -26,7 +26,7 @@ class ReportController extends Controller
 
     public function table()
     {
-        $reports = Report::all();
+        $reports = Number::all();
         $viewData = [
             'reports' => $reports,
         ];

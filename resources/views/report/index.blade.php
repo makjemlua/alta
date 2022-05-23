@@ -4,6 +4,10 @@
         label {
             margin-left: 20px;
         }
+        .card-body
+        {
+            height: 450px;
+        }
 
         #datepicker {
             width: 180px;
@@ -94,25 +98,35 @@
                             @foreach ($reports as $report)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $report->re_name }}</td>
-                                    <td>{{ $report->re_time }}</td>
+                                    <td>{{ $report->num_name }}</td>
+                                    <td>{{ $report->num_start_time }}</td>
                                     <td>
-                                        @if ($report->re_status == 1)
-                                            Đang chờ
-                                        @elseif($report->re_status == 2)
-                                            Đã sử dụng
-                                        @elseif($report->re_status == 0)
-                                            Bỏ qua
+                                        @if ($report->num_status == 1)
+                                            <i class="fas fa-circle active"></i> Đang chờ
+                                        @elseif($report->num_status == 0)
+                                            <i class="fas fa-circle inactive"></i> Đã sử dụng
+                                        @elseif($report->num_status == 3)
+                                            <i class="fas fa-circle ignore"></i> Bỏ qua
                                         @endif
                                     </td>
-                                    <td>{{ $report->re_device }}</td>
+                                    <td>{{ $report->num_device }}</td>
                                 </tr>
                             @endforeach
 
                         </tbody>
                     </table>
+                    <!-- Pagination -->
+                    <div class="pagiWrap">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 num-pagination">
+                                <div class="showreslt">Hiển thị 1-10</div>
+                            </div>
+                            <div class="col-md-5 col-sm-6 text-right show-pagination">
+                                {!! $reports->links() !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
                 <!-- /.card-body -->
             </div>
             <div class="col-md-1 col-sm-1">
@@ -135,6 +149,7 @@
                 paging: false,
                 ordering: true,
                 searching: false,
+                "bInfo" : false
             });
         });
         $(function() {

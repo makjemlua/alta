@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Report;
+use App\Models\Number;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -21,7 +21,7 @@ class ReportExport implements FromView, WithColumnFormatting, WithColumnWidths, 
     public function view(): View
     {
         return view('report.table', [
-            'reports' => Report::all()
+            'reports' => Number::all()
         ]);
     }
 
