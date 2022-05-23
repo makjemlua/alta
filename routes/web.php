@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/number/create', [NumberController::class, 'create'])->name('number.create');
         Route::post('/number/create', [NumberController::class, 'store']);
         Route::get('/number/detail/{id}', [NumberController::class, 'show'])->name('number.detail');
+        Route::get('/number/{action}/{id}', [NumberController::class, 'action'])->name('number.action');
     });
 
     //Report
