@@ -44,3 +44,14 @@
 .form-check-label {
     margin-left: 20px;
 }
+.form-check {
+    margin: 10px 0;
+}
+input.form-check-input{
+    margin: 8px 0;
+}
+.form-control-inline {
+    min-width: 0;
+    width: 70px;
+    display: inline;
+}
