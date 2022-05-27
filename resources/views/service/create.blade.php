@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/device.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content content-header">

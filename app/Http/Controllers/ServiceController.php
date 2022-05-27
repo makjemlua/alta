@@ -113,6 +113,7 @@ class ServiceController extends Controller
     {
         $this->insertOrUpdate($request, $id);
 
+        //update notification
         $name = Auth::user()->name;
         $notification = new Notification();
         $notification->no_name = $name;
@@ -135,6 +136,40 @@ class ServiceController extends Controller
         $service->se_name = $request->se_name;
         $service->se_describe = $request->se_describe;
         $service->se_active = 1;
+
+        //Check number start
+        if($request->has('check_se_num')){
+            Number::where('num_service_id', $id)->delete();
+            $service->se_start_num = $request->se_start_num;
+            $service->se_end_num = $request->se_end_num;
+        }
+        else{
+            $service->se_start_num = null;
+            $service->se_end_num = null;
+            Number::where('num_service_id', $id)->delete();
+        }
+
+        //Check prefix
+        if($request->has('check_se_prefix')){
+            $service->se_prefix = $request->se_prefix;
+        }
+        else{
+            $service->se_prefix = null;
+        }
+
+        //Check suffix
+        if($request->has('check_se_suffix')){
+            $service->se_surfix = $request->se_surfix;
+        }
+        else{
+            $service->se_surfix = null;
+        }
+        if($request->has('check_reset')){
+            $service->se_reset_num = 1;
+        }
+        else{
+            $service->se_reset_num = 0;
+        }   
         //dd($service);
         $service->save();
     }

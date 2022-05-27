@@ -52,16 +52,12 @@ class NumberController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        
         $device = Auth::check() ? 'Hệ thống' : 'Kiosk';
-        $day = date("d");
-        $day = (int)$day;
-        $num = IdGenerator::generate(['table' => 'numbers', 'field' => 'num_number', 'length' => 6, 'prefix' => $day, 'reset_on_prefix_change' => true]);
+        
         $number = new Number();
         $number->num_name = $user->username;
         $result_explode = explode('|', $request->num_service); // Tạo mảng
         $number->num_service = $result_explode[1]; //Tên dịch vụ
-        $number->num_number = $num; //Số thứ tự
         $number->num_start_time = date("Y-m-d H:i:s"); //Thời gian cấp
         $number->num_end_time = date("Y-m-d 17:30:00"); //Hạn sử dụng
         $number->num_device = $device;
@@ -69,9 +65,42 @@ class NumberController extends Controller
         $number->num_phone = $user->phone;
         $number->num_email = $user->email;
         $number->num_service_id = $result_explode[0]; //Mã dịch vụ
+        $id_service = $number->num_service_id;
+        $start_num = Service::where('id', $id_service)->first()->se_start_num;
+        $start_num = $start_num - 1;
+        $end_num = Service::where('id', $id_service)->first()->se_end_num;
+        $prefix = Service::where('id', $id_service)->first()->se_prefix;
+        $surfix = Service::where('id', $id_service)->first()->se_surfix;
+        $reset_num = Service::where('id', $id_service)->first()->se_reset_num;
+        if($reset_num == 1){
+            $reset_num = true;
+        }
+        elseif($reset_num == 0){
+            $reset_num = false;
+        }
+        //Cap so
+        $day = date("d");
+        $day = (int)$day;
+        //$num = IdGenerator::generate(['table' => 'numbers', 'field' => 'num_number', 'length' => 6, 'prefix' => $prefix, 'reset_on_prefix_change' => $reset_num]);
+        //$number->num_number = $num.$surfix; //Số thứ tự
+        //$num_old = $start_num;
+        $num_old = Number::where('num_service_id', $id_service)->latest()->first();
+        if($num_old == null){
+            $num_old = $start_num;
+        }
+        else{
+            $num_old = $num_old->num_number;
+            $num_old = preg_split('/(_)/i', $num_old);
+            $num_old = $num_old[1];
+        }
+        $num_new = (int)$num_old + 1;
+            //dd($num_new);
+        $number->num_number = $prefix."_".$num_new."_".$surfix;
+        
+
         //dd($number);
         $number->save();
-        return redirect()->back()->with('number', 'ABC');
+        return redirect()->back()->with('number','ABC');
     }
 
     /**
