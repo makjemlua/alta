@@ -17,7 +17,7 @@
                                 <div class="col-12 col-sm-6 col-md-3">
                                     <div class="info-box">
                                         <span class="info-box-icon bg-info elevation-1"><i
-                                                class="fas fa-cog"></i></span>
+                                                class="fas fa-calendar"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Số thứ tự đã cấp</span>
                                             <span class="info-box-number">{{ $numberAll }}</span>
@@ -30,7 +30,7 @@
                                 <div class="col-12 col-sm-6 col-md-3">
                                     <div class="info-box mb-3">
                                         <span class="info-box-icon bg-danger elevation-1"><i
-                                                class="fas fa-thumbs-up"></i></span>
+                                                class="fas fa-calendar-check"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Số thứ tự đã sử dụng</span>
                                             <span class="info-box-number">{{ $numberUsed }}</span>
@@ -45,7 +45,7 @@
                                 <div class="col-12 col-sm-6 col-md-3">
                                     <div class="info-box mb-3">
                                         <span class="info-box-icon bg-success elevation-1"><i
-                                                class="fas fa-shopping-cart"></i></span>
+                                                class="fas fa-blog"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Số thứ tự đang chờ</span>
                                             <span class="info-box-number">{{ $numberWaiting }}</span>
@@ -58,7 +58,7 @@
                                 <div class="col-12 col-sm-6 col-md-3">
                                     <div class="info-box mb-3">
                                         <span class="info-box-icon bg-warning elevation-1"><i
-                                                class="fas fa-users"></i></span>
+                                                class="fas fa-calendar-times"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Số thứ tự đã bỏ qua</span>
                                             <span class="info-box-number">{{ $numberMissed }}</span>
@@ -205,8 +205,7 @@
                             $('#revenue-chart').html(respose);
                         }
                     });
-                }
-                else if(value == 2){
+                } else if (value == 2) {
                     $.ajax({
                         url: 'home/week',
                         data: form_data,
@@ -215,8 +214,7 @@
                             $('#revenue-chart').html(respose);
                         }
                     });
-                }
-                else if(value == 3){
+                } else if (value == 3) {
                     $.ajax({
                         url: 'home/month',
                         data: form_data,
@@ -230,7 +228,9 @@
         });
         var datas = "{{ $dates }}";
         var dataChart = JSON.parse(datas.replace(/&quot;/g, '"'));
-        var arr = Object.keys(dataChart).map(function (key) { return dataChart[key]; });
+        var arr = Object.keys(dataChart).map(function(key) {
+            return dataChart[key];
+        });
     </script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
 @endsection
