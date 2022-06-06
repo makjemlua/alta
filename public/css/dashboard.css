@@ -28,6 +28,7 @@ a.btn.btn-logout {
 }
 .info-box {
     height: 100px;
+    border-radius: 10px;
 }
 .info-box-icon {
     width: 40px !important;
@@ -77,20 +78,38 @@ a.btn.btn-logout {
     border-radius: 8px !important;
 }
 .overview-active {
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 400;
+}
+.overview-active span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF7506;
 }
 .overview-cpn{
     padding: 4px;
     border-radius: 10px;
     margin: 4px 0;
-    box-shadow:2px 2px #FF7506;
+    box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+    height: 70px;
 }
-.overview-device {
-    font-size: 12px;
+.overview-device-number {
+    font-size: 18px;
+    font-weight: 600;
+}
+.overview-device-name {
+    color: #FF7506;
 }
 .dial {
     margin-top: -30px !important;
     margin-left: 7px !important;
     font-size: 10px !important;
+}
+.overview-actives {
+    margin: 0;
+    padding: 0;
+}
+.overview-actives ul {
+    margin: 0;
+    padding: 0;
 }
