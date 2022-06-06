@@ -97,7 +97,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                {!! $logs->links() !!}
                 <!-- /.card-body -->
             </div>
 
