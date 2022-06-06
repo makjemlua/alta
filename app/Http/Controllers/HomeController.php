@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Number;
+use App\Models\Device;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -27,9 +29,17 @@ class HomeController extends Controller
     public function index()
     {
         $numberAll = Number::count();
-        $numberUsed = Number::where('num_status', 2)->count();
+        $numberUsed = Number::where('num_status', 0)->count();
         $numberWaiting = Number::where('num_status', 1)->count();
         $numberMissed = Number::where('num_status', 3)->count();
+
+        $device = Device::count();
+        $deviceActive = Device::where('de_active', 1)->count();
+        $deviceInactive = Device::where('de_active', 0)->count();
+
+        $service = Service::count();
+        $serviceActive = Service::where('se_active', 1)->count();
+        $serviceInactive = Service::where('se_active', 0)->count();
 
         $dates = collect();
         $month = date('m');
@@ -63,6 +73,12 @@ class HomeController extends Controller
             'month' => $month,
             'year' => $year,
             'dates' => json_encode($dates),
+            'device' => $device,
+            'service' => $service,
+            'deviceActive' => $deviceActive,
+            'deviceInactive' => $deviceInactive,
+            'serviceActive' => $serviceActive,
+            'serviceInactive' => $serviceInactive
         ];
         return view('dashboard.index', $viewData);
     }

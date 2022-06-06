@@ -108,17 +108,17 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="device" value="75" class="dial" data-min="0"
+                                    <input type="text" name="device" value="{{round(($deviceActive/$device)*100)}}" class="dial" data-min="0"
                                         data-max="100">
                                 </div>
-                                <div class="col-md-3 overview-device">
-                                    <div>123213</div>
-                                    <div><i class="fas fa-desktop"></i> Thiết bị</div>
+                                <div class="col-md-4 overview-device">
+                                    <div class="overview-device-number">{{$device}}</div>
+                                    <div class="overview-device-name"><i class="fas fa-desktop"></i> Thiết bị</div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6 overview-actives">
                                     <ul>
-                                        <li class="overview-active">Đang hoạt động: 435435</li>
-                                        <li class="overview-active">Ngưng hoạt động: 3532</li>
+                                        <li class="overview-active">Đang hoạt động: <span>{{$deviceActive}}</span></li>
+                                        <li class="overview-active">Ngưng hoạt động: <span>{{$deviceInactive}}</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -126,17 +126,17 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="service" value="75" class="dial" data-min="0"
+                                    <input type="text" name="service" value="{{round(($serviceActive/$service)*100)}}" class="dial" data-min="0"
                                         data-max="100">
                                 </div>
-                                <div class="col-md-3 overview-device">
-                                    <div>123213</div>
-                                    <div><i class="fas fa-comments"></i> Dịch vụ</div>
+                                <div class="col-md-4 overview-device">
+                                    <div class="overview-device-number">{{$service}}</div>
+                                    <div class="overview-device-name"><i class="fas fa-comments"></i> Dịch vụ</div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6 overview-actives">
                                     <ul>
-                                        <li class="overview-active">Đang hoạt động: 435435</li>
-                                        <li class="overview-active">Ngưng hoạt động: 3532</li>
+                                        <li class="overview-active">Đang hoạt động: <span>{{$serviceActive}}</span></li>
+                                        <li class="overview-active">Ngưng hoạt động: <span>{{$serviceInactive}}</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -144,18 +144,18 @@
                         <div class="col-md-12 overview-cpn">
                             <div class="row">
                                 <div class="col-md-2" class="">
-                                    <input type="text" name="number" value="75" class="dial" data-min="0"
+                                    <input type="text" name="number" value="{{round(($numberWaiting/$numberAll)*100)}}" class="dial" data-min="0"
                                         data-max="100">
                                 </div>
-                                <div class="col-md-3 overview-device">
-                                    <div>123213</div>
-                                    <div><i class="fab fa-elementor"></i> Cấp số</div>
+                                <div class="col-md-4 overview-device">
+                                    <div class="overview-device-number">{{$numberAll}}</div>
+                                    <div class="overview-device-name"><i class="fab fa-elementor"></i> Cấp số</div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6 overview-actives">
                                     <ul>
-                                        <li class="overview-active">Đang chờ: 435435</li>
-                                        <li class="overview-active">Đã sử dụng: 3532</li>
-                                        <li class="overview-active">Bỏ qua: 3532</li>
+                                        <li class="overview-active">Đang chờ: <span>{{$numberWaiting}}</span></li>
+                                        <li class="overview-active">Đã sử dụng: <span>{{$numberUsed}}</span></li>
+                                        <li class="overview-active">Bỏ qua: <span>{{$numberMissed}}</span></li>
                                     </ul>
                                 </div>
                             </div>
