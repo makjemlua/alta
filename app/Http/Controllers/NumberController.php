@@ -17,12 +17,21 @@ class NumberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $numbers = Number::whereRaw(1);
+        $services = Service::all();
+        if ($request->select_service) {
+            $services->where('id', $request->select_service);
+        }
+        if ($request->select_status) {
+            $numbers->where('num_status', $request->select_status);
+        }
         $numbers = $numbers->paginate(10);
+        
         $viewData = [
-            'numbers' => $numbers
+            'numbers' => $numbers,
+            'services' => $services
         ];
         return view('numbers.index', $viewData);
     }

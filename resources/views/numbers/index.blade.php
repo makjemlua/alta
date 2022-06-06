@@ -54,25 +54,39 @@
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="is_sale" class="col-sm-12 control-label">Tên dịch vụ</label>
+                                        <label for="select_service" class="col-sm-12 control-label">Tên dịch vụ</label>
                                         <div class="col-sm-12">
-                                            <select name="is_sale" id="is_sale" class="form-control">
+                                            <select name="select_service" id="select_service" class="form-control"
+                                            onchange="this.form.submit()">
                                                 <option value="0">Tất cả</option>
-                                                <option value="1">Hoạt động</option>
-                                                <option value="2">Ngưng hoạt động</option>
+                                                    @foreach($services as $service)
+                                                        <option value="{{$service->id}}"
+                                                            {{ \Request::get('select_service') == $service->id ? "selected='selected'" : '' }}>
+                                                            {{$service->se_name}}
+                                                        </option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="is_sale" class="col-sm-12 control-label">Tình trạng</label>
+                                        <label for="select_status" class="col-sm-12 control-label">Tình trạng</label>
                                         <div class="col-sm-12">
-                                            <select name="is_sale" id="is_sale" class="form-control">
-                                                <option value="0">Tất cả</option>
-                                                <option value="1">Đang chờ</option>
-                                                <option value="2">Đã sử dụng</option>
-                                                <option value="2">Bỏ qua</option>
+                                            <select name="select_status" id="select_status" class="form-control"
+                                            onchange="this.form.submit()">
+                                            <option value=""
+                                            {{ \Request::get('select_status') == '' ? "selected='selected'" : '' }}>Tất cả
+                                            </option>
+                                            <option value="1"
+                                                {{ \Request::get('select_status') == 1 ? "selected='selected'" : '' }}>Đang chờ
+                                            </option>
+                                            <option value="0"
+                                                {{ \Request::get('select_status') == 0 ? "selected='selected'" : '' }}>Đã sử dụng
+                                            </option>
+                                            <option value="3"
+                                                {{ \Request::get('select_status') == 3 ? "selected='selected'" : '' }}>Bỏ qua
+                                            </option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,10 +95,17 @@
                                     <div class="form-group">
                                         <label for="is_sale" class="col-sm-12 control-label">Nguồn cấp</label>
                                         <div class="col-sm-12">
-                                            <select name="is_sale" id="is_sale" class="form-control">
-                                                <option value="0">Tất cả</option>
-                                                <option value="1">Kisok</option>
-                                                <option value="2">Hệ thống</option>
+                                            <select name="is_sale" id="is_sale" class="form-control"
+                                            onchange="this.form.submit()">
+                                            <option value=""
+                                            {{ \Request::get('active') == '' ? "selected='selected'" : '' }}>Tất cả
+                                            </option>
+                                            <option value="1"
+                                                {{ \Request::get('active') == 1 ? "selected='selected'" : '' }}>Hoạt động
+                                            </option>
+                                            <option value="2"
+                                                {{ \Request::get('active') == 2 ? "selected='selected'" : '' }}>Ngưng hoạt động
+                                            </option>
                                             </select>
                                         </div>
                                     </div>
