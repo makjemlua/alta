@@ -23,6 +23,9 @@ class ServiceController extends Controller
         if ($request->active) {
             $services->where('se_active', $request->active);
         }
+        if ($request->search_name) {
+            $services->where('se_name', 'like', '%' . $request->search_name . '%');
+        }
         if ($request->time_start && $request->time_end) {
             $start = $request->time_start;
             $end = $request->time_end;
