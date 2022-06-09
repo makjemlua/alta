@@ -27,6 +27,12 @@ class NumberController extends Controller
         if ($request->select_status) {
             $numbers->where('num_status', $request->select_status);
         }
+        if ($request->select_system) {
+            $numbers->where('num_device', $request->select_system);
+        }
+        if ($request->search_name) {
+            $numbers->where('num_name', 'like', '%' . $request->search_name . '%');
+        }
         $numbers = $numbers->paginate(10);
         
         $viewData = [
@@ -169,9 +175,9 @@ class NumberController extends Controller
             switch ($action) {
                 case 'status':
                     if($number->num_status == 1){
-                        $number->num_status = 0;
+                        $number->num_status = 2;
                     }
-                    elseif($number->num_status == 0){
+                    elseif($number->num_status == 2){
                         $number->num_status = 3;
                     }
                     $number->save();

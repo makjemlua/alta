@@ -15,7 +15,7 @@ class Number extends Model
 	protected $guarded = ['*'];
 
     const STATUS_WAITING = 1;
-	const STATUS_USED = 0;
+	const STATUS_USED = 2;
     const STATUS_IGNORE = 3;
 
     protected $status = [
@@ -23,7 +23,7 @@ class Number extends Model
 			'name' => 'Đang chờ',
 			'class' => 'fas fa-circle active',
 		],
-		0 => [
+		2 => [
 			'name' => 'Đã sử dụng',
 			'class' => 'fas fa-circle inactive',
 		],

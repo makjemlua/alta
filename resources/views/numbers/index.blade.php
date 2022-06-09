@@ -81,8 +81,8 @@
                                             <option value="1"
                                                 {{ \Request::get('select_status') == 1 ? "selected='selected'" : '' }}>Đang chờ
                                             </option>
-                                            <option value="0"
-                                                {{ \Request::get('select_status') == 0 ? "selected='selected'" : '' }}>Đã sử dụng
+                                            <option value="2"
+                                                {{ \Request::get('select_status') == 2 ? "selected='selected'" : '' }}>Đã sử dụng
                                             </option>
                                             <option value="3"
                                                 {{ \Request::get('select_status') == 3 ? "selected='selected'" : '' }}>Bỏ qua
@@ -93,18 +93,18 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="is_sale" class="col-sm-12 control-label">Nguồn cấp</label>
+                                        <label for="select_system" class="col-sm-12 control-label">Nguồn cấp</label>
                                         <div class="col-sm-12">
-                                            <select name="is_sale" id="is_sale" class="form-control"
+                                            <select name="select_system" id="select_system" class="form-control"
                                             onchange="this.form.submit()">
                                             <option value=""
-                                            {{ \Request::get('active') == '' ? "selected='selected'" : '' }}>Tất cả
+                                            {{ \Request::get('select_system') == '' ? "selected='selected'" : '' }}>Tất cả
                                             </option>
-                                            <option value="1"
-                                                {{ \Request::get('active') == 1 ? "selected='selected'" : '' }}>Hoạt động
+                                            <option value="Kiosk"
+                                                {{ \Request::get('select_system') == 'Kiosk' ? "selected='selected'" : '' }}>Kiosk
                                             </option>
-                                            <option value="2"
-                                                {{ \Request::get('active') == 2 ? "selected='selected'" : '' }}>Ngưng hoạt động
+                                            <option value="Hệ thống"
+                                                {{ \Request::get('select_system') == 'Hệ thống' ? "selected='selected'" : '' }}>Hệ thống
                                             </option>
                                             </select>
                                         </div>
