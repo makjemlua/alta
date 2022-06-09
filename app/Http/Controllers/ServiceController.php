@@ -194,7 +194,12 @@ class ServiceController extends Controller
             $service = Service::find($id);
             switch ($action) {
                 case 'active':
-                    $service->se_active = $service->se_active ? 0 : 1;
+                    if($service->se_active == 1){
+                        $service->se_active = 2;
+                    }
+                    elseif($service->se_active == 2){
+                        $service->se_active = 1;
+                    }
                     $service->save();
                     break;
             }
