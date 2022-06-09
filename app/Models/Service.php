@@ -15,7 +15,7 @@ class Service extends Model
 	protected $guarded = ['*'];
     
     const STATUS_ACTIVE = 1;
-	const STATUS_INACTIVE = 0;
+	const STATUS_INACTIVE = 2;
 
 
 	protected $active = [
@@ -23,7 +23,7 @@ class Service extends Model
 			'name' => 'Hoạt động',
 			'class' => 'fas fa-circle active',
 		],
-		0 => [
+		2 => [
 			'name' => 'Ngưng hoạt động',
 			'class' => 'fas fa-circle inactive',
 		],
