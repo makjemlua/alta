@@ -29,17 +29,17 @@ class HomeController extends Controller
     public function index()
     {
         $numberAll = Number::count();
-        $numberUsed = Number::where('num_status', 0)->count();
+        $numberUsed = Number::where('num_status', 2)->count();
         $numberWaiting = Number::where('num_status', 1)->count();
         $numberMissed = Number::where('num_status', 3)->count();
 
         $device = Device::count();
         $deviceActive = Device::where('de_active', 1)->count();
-        $deviceInactive = Device::where('de_active', 0)->count();
+        $deviceInactive = Device::where('de_active', 2)->count();
 
         $service = Service::count();
         $serviceActive = Service::where('se_active', 1)->count();
-        $serviceInactive = Service::where('se_active', 0)->count();
+        $serviceInactive = Service::where('se_active', 2)->count();
 
         $dates = collect();
         $month = date('m');
@@ -171,5 +171,11 @@ class HomeController extends Controller
             'year' => $year,
         ];
         return view('dashboard.monthChart', $viewData);
+    }
+    public function chartHour(Request $request)
+    {
+        $day = $request->getday;
+        dd($day);
+        return view('dashboard.hourChart');
     }
 }
