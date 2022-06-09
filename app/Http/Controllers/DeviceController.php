@@ -155,11 +155,21 @@ class DeviceController extends Controller
 			$device = Device::find($id);
 			switch ($action) {
 			case 'active':
-				$device->de_active = $device->de_active ? 0 : 1;
+                if($device->de_active == 1){
+                        $device->de_active = 2;
+                    }
+                    elseif($device->de_active == 2){
+                        $device->de_active = 1;
+                    }
 				$device->save();
 				break;
             case 'connect':
-				$device->de_connect = $device->de_connect ? 0 : 1;
+                if($device->de_connect == 1){
+                        $device->de_connect = 2;
+                    }
+                    elseif($device->de_connect == 2){
+                        $device->de_connect = 1;
+                    }
 				$device->save();
 				break;
 			}
